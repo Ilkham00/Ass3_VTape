@@ -1,0 +1,268 @@
+/* tablet- grids go 2 columns */
+@media (max-width: 900px) {
+  .page-shell {
+    width: min(720px, calc(100% - 48px));
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .memory-card {
+    min-height: 280px;
+    padding: 20px 16px 16px;
+  }
+
+  .site-nav {
+    width: min(720px, calc(100% - 48px));
+  }
+
+  .nav-links ul {
+    gap: 14px;
+  }
+
+  .nav-links {
+    font-size: 0.85rem;
+  }
+
+  .playlists-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .playlist-card {
+    padding: 18px 16px 22px;
+  }
+
+  .contacts-shell {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contacts-intro {
+    align-items: center;
+  }
+
+   .floating-disc {
+    display: none;
+  }
+
+  .featured-disc-image {
+    left: -30px;
+    width: min(220px, 30vw);
+  }
+
+  .featured-shell {
+    min-height: 420px;
+  }
+
+  .featured-text {
+    margin-left: min(200px, 28vw);
+  }
+}
+
+/* phone- single column, nav wraps, featured disc at bottom */
+@media (max-width: 560px) {
+  .page-shell {
+    width: calc(100% - 28px);
+  }
+
+  .idea-title {
+    font-size: 2rem;
+    line-height: 1.08;
+  }
+
+  .idea-intro {
+    font-size: 0.95rem;
+  }
+
+  .memory-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+    margin-top: 44px;
+  }
+
+  .memory-card {
+    width: 100%;
+    max-width: 320px;
+    min-height: 260px;
+    padding: 20px 16px 18px;
+  }
+
+  .image-slot {
+    height: 88px;
+  }
+
+  .memory-card p {
+    font-size: 0.9rem;
+  }
+
+  .idea-cta-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 56px;
+  }
+
+  .idea-cta-card {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 320px;
+    padding: 22px 20px;
+  }
+
+  .idea-quote {
+    font-size: 1.35rem;
+  }
+
+  .idea-quote-caption {
+    font-size: 0.95rem;
+  }
+
+  .idea-cta-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .idea-cta-card p {
+    font-size: 1rem;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 22px;
+    padding: 14px;
+  }
+
+  .logo-link {
+    justify-content: center;
+  }
+
+  .nav-links {
+    width: 100%;
+  }
+
+  .nav-links ul {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+
+  .hero-tagline {
+    align-self: center;
+    text-align: center;
+  }
+
+  .wordmark {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .hero-cat {
+    width: 76px;
+  }
+
+    .featured-section {
+    padding-bottom: 0;
+  }
+
+  .featured-shell {
+    min-height: 0;
+    margin-top: 24px;
+    padding-bottom: 130px;
+    display: block;
+  }
+
+  .featured-text {
+    position: relative;
+    z-index: 2;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .featured-list a {
+    text-align: center;
+  }
+
+  .featured-disc-image {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    right: auto;
+    bottom: -80px;
+    width: min(120px, 32vw);
+    height: auto;
+    margin: 0;
+    transform: translateX(-50%) rotate(-90deg);
+    transform-origin: center center;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .site-footer {
+    margin-top: 0;
+  }
+  .playlists-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 28px;
+  }
+
+  .playlist-card {
+    width: 100%;
+    max-width: 320px;
+    padding: 18px 14px 22px;
+  }
+
+  .playlist-card h2 {
+    font-size: 1.05rem;
+  }
+
+  .playlist-disc {
+    max-width: 150px;
+    margin: 4px 0 16px;
+  }
+
+  .faq-item summary {
+    font-size: 0.95rem;
+  }
+
+  .faq-item p {
+    font-size: 0.88rem;
+  }
+
+  .contacts-card {
+    padding: 24px 18px;
+  }
+
+  .contacts-card input {
+    padding: 10px 12px;
+    margin-bottom: 16px;
+  }
+
+  .make-it-yours-shell {
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 30px 24px;
+  }
+
+  .make-it-yours-text {
+    flex: 1 1 auto;
+  }
+
+  .make-it-yours-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .make-it-yours-text ol {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .make-it-yours-btn {
+    width: 100%;
+  }
+}
