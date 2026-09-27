@@ -340,3 +340,138 @@ body {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+/*Contacts page*/
+
+/* flex: contacts form + intro side by side */
+.contacts-shell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.contacts-intro {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contacts-title {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 3.6vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.contacts-cat {
+  display: block;
+  width: 76px;
+  height: auto;
+  margin: 22px 0 0;
+}
+
+.contacts-card {
+  width: min(480px, 100%);
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #f7f7f7;
+  color: #111;
+  border-radius: 14px;
+}
+
+.contacts-card h2 {
+  margin: 0 0 26px;
+  font-family: "Iosevka Charon", monospace;
+  font-weight: 500;
+  font-size: clamp(1.3rem, 2.4vw, 1.55rem);
+  line-height: 1.25;
+}
+
+.contacts-card label {
+  margin: 0 0 8px;
+  font-family: "Iosevka Charon", monospace;
+  font-size: 0.95rem;
+}
+
+.contacts-card input {
+  margin: 0 0 20px;
+  padding: 12px 14px;
+
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  background: #fff;
+  color: #111;
+
+  font-family: "Iosevka Charon", monospace;
+  font-size: 0.95rem;
+}
+
+.contacts-card input:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 1px;
+}
+
+.btn-submit {
+  margin-top: 8px;
+  padding: 14px;
+
+  border: none;
+  border-radius: 15px;
+  background: #111;
+  color: #fff;
+
+  font-family: "Iosevka Charon", monospace;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-submit:hover,
+.btn-submit:focus-visible {
+  background: #2a2a2a;
+}
+
+.faq-kicker {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.faq-title {
+  margin: 0 0 24px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.faq-item {
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.faq-item p {
+  margin: 12px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
