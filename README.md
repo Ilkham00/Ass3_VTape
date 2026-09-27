@@ -21,18 +21,6 @@ Group: MT-2503
 | Playlists         | playlists.html   | Kussainova Aizada   |
 | Contacts          | contacts.html    | Zholdanova Elnura   |
 
-## Project Structure
-Ass3_VTape
-├── index.html
-├── idea.html
-├── playlists.html
-├── contacts.html
-├── css/
-│ ├── style.css
-│ └── responsive.css
-├── images/
-└── README.md
-
 ## Deployed Website
 [https://ilkham00.github.io/Ass3_VTape/index.html]
 
