@@ -275,3 +275,68 @@ body {
   line-height: 1.45;
   color: rgba(255, 255, 255, 0.8);
 }
+/* Home page - Featured Playlists teaser*/
+
+.featured-section {
+  overflow: hidden;
+}
+
+.featured-disc-image {
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(280px, 32vw);
+  height: auto;
+  display: block;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.featured-shell {
+  position: relative;
+  min-height: 480px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.featured-text {
+  position: relative;
+  z-index: 1;
+  margin-left: min(290px, 34vw);
+  flex: 1;         
+  min-width: 0;
+  text-align: left;
+}
+
+.featured-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  width: 100%;     
+}
+
+.featured-list a {
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  text-decoration: none;
+}
+
+.featured-list a:hover,
+.featured-list a:focus-visible {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.featured-link {
+  display: inline-block;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
