@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VintageTape Playlists - choose and customize your own catalog of Rock, Noise Pop, k-pop, Neo, J-pop and Indie.">
-  <title>Playlists</title>
+  <meta name="description" content="VintageTape Playlists - six genres to build a catalog around: Rock, Noise Pop, k-pop, Neo, J-pop and Indie.">
+  <title>Playlists | VintageTape</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
 
   <header class="site-nav">
     <a href="index.html" class="logo-link">
-      <img src="images/logo.png" alt="VintageTape logo" class="logo-image">
+      <img src="images/logo.png" alt="VintageTape logo" class="logo-image" width="40" height="40">
       <span class="logo-text">VintageTape</span>
     </a>
 
@@ -26,71 +26,65 @@
       <ul>
         <li><a href="index.html">Our Product</a></li>
         <li><a href="idea.html">Idea</a></li>
-        <li><a href="playlists.html" class="active">Playlists(!)</a></li>
+        <li><a href="playlists.html" aria-current="page">Playlists(!)</a></li>
         <li><a href="contacts.html">Contacts</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <section class="memory-section playlists-section">
+  <main id="main-content">
+    <section class="memory-section playlists-section" aria-labelledby="playlists-title">
 
       <img src="images/disc-float-left.png" alt="" class="floating-disc floating-disc-left" aria-hidden="true">
       <img src="images/disc-float-right.png" alt="" class="floating-disc floating-disc-right" aria-hidden="true">
 
       <div class="page-shell">
 
-        <h1 class="playlists-title">Choose and Customize your Own Catalog and share with others!</h1>
+        <h1 id="playlists-title" class="playlists-title">Choose a genre and plan your own catalog</h1>
 
         <div class="playlists-grid">
 
-          <a class="playlist-card" href="#" data-genre="rock">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-rock.png" alt="Rock playlist disc" class="card-image">
             </figure>
             <h2>Rock</h2>
-          </a>
+          </article>
 
-          <a class="playlist-card" href="#" data-genre="noise-pop">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-noise-pop.png" alt="Noise Pop playlist disc" class="card-image">
             </figure>
             <h2>Noise Pop</h2>
-          </a>
+          </article>
 
-          <a class="playlist-card" href="#" data-genre="k-pop">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-kpop.png" alt="K-pop playlist disc" class="card-image">
             </figure>
             <h2>k-pop</h2>
-          </a>
+          </article>
 
-          <a class="playlist-card" href="#" data-genre="neo">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-neo.png" alt="Neo playlist disc" class="card-image">
             </figure>
             <h2>Neo</h2>
-          </a>
+          </article>
 
-          <a class="playlist-card" href="#" data-genre="j-pop">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-jpop.png" alt="J-pop playlist disc" class="card-image">
             </figure>
             <h2>J-pop</h2>
-          </a>
+          </article>
 
-          <a class="playlist-card" href="#" data-genre="indie">
-            <span class="playlist-arrow" aria-hidden="true">↗</span>
+          <article class="playlist-card">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-indie.png" alt="Indie playlist disc" class="card-image">
             </figure>
             <h2>Indie</h2>
-          </a>
+          </article>
 
         </div>
 
@@ -103,17 +97,17 @@
         <div class="make-it-yours-text">
           <h2 id="make-it-yours-title">Make it yours</h2>
           <p>
-            Pick a genre, add your own 10-14 tracks, and give your playlist a name -
-            VintageTape wraps it in a case that looks like the ones we used to keep on the shelf.
+            Pick a genre, choose 10-14 tracks and give your playlist a name.
+            VintageTape is a static concept website, so playlists are not saved or shared here.
           </p>
           <ol>
             <li>Choose a genre from the grid above.</li>
-            <li>Send us your track order through the contact form.</li>
-            <li>Get a shareable link to your custom playlist.</li>
+            <li>Write down 10-14 tracks and a name for your playlist.</li>
+            <li>Open the demo contact form to see how a request would look.</li>
           </ol>
         </div>
 
-        <a class="btn-cta make-it-yours-btn" href="contacts.html">Request a custom catalog</a>
+        <a class="btn-cta make-it-yours-btn" href="contacts.html">Open the demo contact form</a>
 
       </div>
     </section>
@@ -121,8 +115,14 @@
 
   <footer class="site-footer">
     <div class="page-shell footer-content">
-      <p> &copy 2026 VintageTape. Web Technologies Frontend. All rights reserved</p>
-      <p class="footer-copy">Questions? <a href="https://lms.astanait.edu.kz/login/index.php?loginredirect=1">MT2503@astanait.edu.kz</a></p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Our Product</a>
+        <a href="idea.html">Idea</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="contacts.html">Contacts</a>
+      </nav>
+      <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
+      <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
     </div>
   </footer>
 

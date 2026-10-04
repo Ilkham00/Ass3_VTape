@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="VintageTape Idea - what memory-cassettes and CDs meant before everything became a file.">
-  <title>Idea</title>
+  <title>Idea | VintageTape</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,21 +18,21 @@
 
   <header class="site-nav">
     <a href="index.html" class="logo-link">
-      <img src="images/logo.png" alt="VintageTape logo" class="logo-image">
+      <img src="images/logo.png" alt="VintageTape logo" class="logo-image" width="40" height="40">
       <span class="logo-text">VintageTape</span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
       <ul>
         <li><a href="index.html">Our Product</a></li>
-        <li><a href="idea.html" class="active">Idea</a></li>
+        <li><a href="idea.html" aria-current="page">Idea</a></li>
         <li><a href="playlists.html">Playlists(!)</a></li>
         <li><a href="contacts.html">Contacts</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="memory-section">
       <div class="page-shell">
 
@@ -113,8 +113,14 @@
 
   <footer class="site-footer">
     <div class="page-shell footer-content">
-      <p> &copy 2026 VintageTape. Web Technologies Frontend. All rights reserved</p>
-      <p class="footer-copy">Questions? <a href="https://lms.astanait.edu.kz/login/index.php?loginredirect=1">MT2503@astanait.edu.kz</a></p>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Our Product</a>
+        <a href="idea.html">Idea</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="contacts.html">Contacts</a>
+      </nav>
+      <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
+      <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
     </div>
   </footer>
 

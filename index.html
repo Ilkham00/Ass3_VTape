@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="VintageTape - a memory-themed landing page about cassette and CD nostalgia.">
-  <title>Home</title>
+  <title>Home | VintageTape</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +18,13 @@
 
   <header class="site-nav">
     <a href="index.html" class="logo-link">
-      <img src="images/logo.png" alt="VintageTape logo" class="logo-image">
+      <img src="images/logo.png" alt="VintageTape logo" class="logo-image" width="40" height="40">
       <span class="logo-text">VintageTape</span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
       <ul>
-        <li><a href="index.html" class="active">Our Product</a></li>
+        <li><a href="index.html" aria-current="page">Our Product</a></li>
         <li><a href="idea.html">Idea</a></li>
         <li><a href="playlists.html">Playlists(!)</a></li>
         <li><a href="contacts.html">Contacts</a></li>
@@ -32,7 +32,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="memory-section hero-section" aria-labelledby="hero-title">
       <div class="page-shell hero-shell">
 
@@ -50,6 +50,7 @@
 
       </div>
     </section>
+
     <section class="memory-section" aria-labelledby="benefits-title">
       <div class="page-shell">
         <h2 id="benefits-title" class="benefits-title">Why VintageTape</h2>
@@ -66,14 +67,14 @@
           </article>
 
           <article class="benefit-card">
-            <h3>Share your catalog</h3>
-            <p>Save the playlists you like and pass the link on to a friend.</p>
+            <h3>Made to be shared</h3>
+            <p>A good playlist is meant to be passed on, like a mixtape handed to a friend.</p>
           </article>
         </div>
 
         <p class="benefits-summary">
-          VintageTape lets you listen to your favorite songs and playlists made by other
-          people, and brings back the vibe of the old disc collections we used to hold in our hands.
+          VintageTape is a concept for browsing themed playlist catalogs. It brings back
+          the vibe of the old disc collections we used to hold in our hands.
         </p>
       </div>
     </section>
@@ -81,7 +82,7 @@
     <!-- FEATURED PLAYLISTS -->
     <section class="memory-section featured-section" aria-labelledby="featured-title">
 
-      <img src="images/disc-float-left.png" alt="A silver CD, cut off at the edge of the screen" class="featured-disc-image">
+      <img src="images/disc-float-left.png" alt="" aria-hidden="true" class="featured-disc-image">
 
       <div class="page-shell featured-shell">
 
@@ -103,8 +104,14 @@
 
   <footer class="site-footer">
     <div class="page-shell footer-content">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Our Product</a>
+        <a href="idea.html">Idea</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="contacts.html">Contacts</a>
+      </nav>
       <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
-      <p class="footer-copy">Questions? <a href="https://lms.astanait.edu.kz/login/index.php?loginredirect=1">MT2503@astanait.edu.kz</a></p>
+      <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
     </div>
   </footer>
 
