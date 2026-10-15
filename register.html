@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VintageTape Register - a demonstration registration form for the catalog club, with password and country validation.">
+  <title>Register | VintageTape</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Iosevka+Charon:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="forms-page">
+
+  <header class="site-nav">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.png" alt="VintageTape logo" class="logo-image" width="40" height="40">
+      <span class="logo-text">VintageTape</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Our Product</a></li>
+        <li><a href="idea.html">Idea</a></li>
+        <li><a href="playlists.html">Playlists(!)</a></li>
+        <li><a href="contacts.html">Contacts</a></li>
+        <li><a href="register.html" aria-current="page">Register</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="memory-section register-section" aria-labelledby="register-title">
+      <div class="page-shell">
+
+        <h1 id="register-title" class="register-title">Join the VintageTape<br>catalog club</h1>
+        <p class="register-intro">
+          Tell us who you are and which genres you like. This is a demonstration form:
+          no account is created and nothing is sent or stored.
+        </p>
+
+        <form id="register-form" class="contacts-card register-card needs-validation" novalidate>
+          <p class="demo-note">Demo only. Use sample data, not your real password.</p>
+
+          <div id="register-success" class="alert alert-success d-none">
+            Demo only: your details look valid. No account was created and nothing was sent or stored.
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="first-name" class="form-label">First name</label>
+              <input type="text" class="form-control" id="first-name" name="firstName" required minlength="2">
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">First name must be at least 2 characters.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="last-name" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="last-name" name="lastName" required minlength="2">
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Last name must be at least 2 characters.</div>
+            </div>
+
+            <div class="col-12">
+              <label for="register-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="register-email" name="email"
+                     placeholder="name@example.com" required pattern=".+@.+\..+">
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter an email like name@example.com.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" required minlength="8">
+              <div class="form-text">At least 8 characters.</div>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Password must be at least 8 characters.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="confirm-password" class="form-label">Confirm password</label>
+              <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required minlength="8">
+              <div class="form-text">Type the same password again.</div>
+              <div class="valid-feedback">Passwords match.</div>
+              <div class="invalid-feedback">Enter at least 8 characters. Both passwords must match.</div>
+            </div>
+
+            <div class="col-12">
+              <fieldset>
+                <legend class="form-legend">Gender <span class="form-text d-inline">(optional)</span></legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="gender-female" value="female">
+                  <label class="form-check-label" for="gender-female">Female</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="gender-male" value="male">
+                  <label class="form-check-label" for="gender-male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="gender-other" value="other">
+                  <label class="form-check-label" for="gender-other">Other</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="gender" id="gender-none" value="prefer-not-to-say">
+                  <label class="form-check-label" for="gender-none">Prefer not to say</label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="col-12">
+              <fieldset>
+                <legend class="form-legend">Favourite genres <span class="form-text d-inline">(optional)</span></legend>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-rock" value="rock">
+                  <label class="form-check-label" for="genre-rock">Rock</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-noise-pop" value="noise-pop">
+                  <label class="form-check-label" for="genre-noise-pop">Noise Pop</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-kpop" value="k-pop">
+                  <label class="form-check-label" for="genre-kpop">k-pop</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-neo" value="neo">
+                  <label class="form-check-label" for="genre-neo">Neo</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-jpop" value="j-pop">
+                  <label class="form-check-label" for="genre-jpop">J-pop</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" name="genres" id="genre-indie" value="indie">
+                  <label class="form-check-label" for="genre-indie">Indie</label>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="col-md-6">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" name="country" required>
+                <option value="" selected>Choose your country...</option>
+                <option value="kazakhstan">Kazakhstan</option>
+                <option value="kyrgyzstan">Kyrgyzstan</option>
+                <option value="uzbekistan">Uzbekistan</option>
+                <option value="turkey">Turkey</option>
+                <option value="usa">United States</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please choose your country.</div>
+            </div>
+
+            <div class="col-12 form-actions">
+              <button type="submit" class="btn-submit">Submit</button>
+              <button type="reset" class="btn-reset">Reset</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <section class="memory-section" aria-labelledby="rules-title">
+      <div class="page-shell">
+        <div class="rules-card">
+          <h2 id="rules-title">What this demo checks</h2>
+          <ul>
+            <li>First and last name: required, at least 2 characters each.</li>
+            <li>Email: required, in the form name@example.com.</li>
+            <li>Password and confirmation: required, at least 8 characters, and both must match.</li>
+            <li>Country: required. Gender and favourite genres are optional.</li>
+          </ul>
+          <p>Questions about the project? <a href="contacts.html">Open the contact form</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-content">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Our Product</a>
+        <a href="idea.html">Idea</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="register.html">Register</a>
+      </nav>
+      <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
+      <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
+    </div>
+  </footer>
+
+  <script src="js/forms.js" defer></script>
+</body>
+</html>

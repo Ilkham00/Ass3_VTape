@@ -176,14 +176,22 @@
     width: auto;
   }
 
-  /* contacts: roomier form card */
+  /* contacts and register: roomier form card */
   .contacts-card {
     padding: 40px;
   }
 
-  .contacts-card input {
-    margin-bottom: 20px;
-    padding: 12px 14px;
+  .register-title {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1.15;
+  }
+
+  .register-intro {
+    font-size: 1rem;
+  }
+
+  .rules-card {
+    padding: 30px 36px;
   }
 
   .faq-item summary {

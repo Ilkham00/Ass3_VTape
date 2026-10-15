@@ -21,13 +21,17 @@ body {
   background-attachment: fixed;
 }
 
+/* Pages that load Bootstrap keep the same line height as the other pages */
+.forms-page {
+  line-height: normal;
+}
+
 /* Responsive images: never wider than their container, keep proportions */
 img {
   display: block;
   max-width: 100%;
   height: auto;
 }
-
 
 /* Page sections */
 
@@ -71,6 +75,10 @@ img {
   color: #111;
   text-decoration: none;
   flex-shrink: 0;
+}
+
+.logo-link:hover {
+  color: #111;
 }
 
 .logo-image {
@@ -142,6 +150,7 @@ img {
 .btn-cta:hover,
 .btn-cta:focus-visible {
   background: #2a2a2a;
+  color: #fff;
 }
 
 /* Shared card / image styles */
@@ -723,11 +732,8 @@ img {
 }
 
 .contacts-card {
-  width: min(480px, 100%);
+  width: min(560px, 100%);
   padding: 24px 18px;
-
-  display: flex;
-  flex-direction: column;
 
   background: #f7f7f7;
   color: #111;
@@ -752,44 +758,145 @@ img {
   line-height: 1.4;
 }
 
-.contacts-card label {
-  margin: 0 0 8px;
+/* Bootstrap form parts, adjusted to the VintageTape look */
+.contacts-card .form-label,
+.contacts-card .form-check-label,
+.contacts-card .form-legend {
   font-family: "Iosevka Charon", monospace;
   font-size: 0.95rem;
-}
-
-.contacts-card input {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 0 16px;
-  padding: 10px 12px;
-
-  border: 1px solid rgba(0, 0, 0, 0.35);
-  border-radius: 6px;
-  background: #fff;
   color: #111;
+}
 
+.contacts-card .form-legend {
+  float: none;
+  width: auto;
+  margin-bottom: 0.5rem;
+}
+
+.contacts-card .form-control,
+.contacts-card .form-select {
   font-family: "Iosevka Charon", monospace;
   font-size: 0.95rem;
 }
 
-.btn-submit {
-  margin-top: 8px;
-  padding: 14px;
+.contacts-card .form-text {
+  color: rgba(17, 17, 17, 0.7);
+  font-size: 0.8rem;
+}
 
-  border: none;
+/* darker feedback colours so the small text stays readable on the light card */
+.contacts-card .invalid-feedback {
+  color: #b02a37;
+  font-size: 0.85rem;
+}
+
+.contacts-card .valid-feedback {
+  color: #146c43;
+  font-size: 0.85rem;
+}
+
+.contacts-card .alert {
+  font-size: 0.9rem;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-submit,
+.btn-reset {
+  padding: 12px 28px;
   border-radius: 15px;
-  background: #111;
-  color: #fff;
-
   font-family: "Iosevka Charon", monospace;
   font-size: 0.95rem;
   cursor: pointer;
 }
 
+.btn-submit {
+  border: 2px solid #111;
+  background: #111;
+  color: #fff;
+}
+
 .btn-submit:hover,
 .btn-submit:focus-visible {
   background: #2a2a2a;
+}
+
+.btn-reset {
+  border: 2px solid #111;
+  background: transparent;
+  color: #111;
+}
+
+.btn-reset:hover,
+.btn-reset:focus-visible {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* Register page */
+
+.register-title {
+  margin: 0 auto;
+  max-width: 650px;
+  text-align: center;
+
+  font-family: "Inter", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.register-intro {
+  max-width: 620px;
+  margin: 20px auto 32px;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.register-card {
+  width: min(720px, 100%);
+  margin: 0 auto;
+}
+
+.rules-card {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 22px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+}
+
+.rules-card h2 {
+  margin: 0 0 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+}
+
+.rules-card ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.rules-card p {
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.rules-card a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .faq-kicker {
