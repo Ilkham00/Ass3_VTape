@@ -15,6 +15,7 @@
         crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/features.css">
 </head>
 
 <body class="forms-page">
@@ -32,6 +33,7 @@
         <li><a href="playlists.html">Playlists(!)</a></li>
         <li><a href="contacts.html" aria-current="page">Contacts</a></li>
         <li><a href="register.html">Register</a></li>
+        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
       </ul>
     </nav>
   </header>
@@ -94,29 +96,37 @@
 
     <section id="faq" class="memory-section faq-section" aria-labelledby="faq-title">
       <div class="page-shell">
-        <p class="faq-kicker">FAQ</p>
+        <p class="faq-kicker">FAQ - Task 2 - Show and hide information</p>
         <h2 id="faq-title" class="faq-title">Before you write</h2>
 
         <div class="faq-list">
-          <details class="faq-item">
-            <summary>Do I need an account?</summary>
-            <p>No. VintageTape has no logins. You can look at the demo registration form on the Register page, but it does not create an account.</p>
-          </details>
+          <div class="faq-item">
+            <h3 class="faq-heading">
+              <button type="button" class="faq-question" id="faq-button-1" aria-expanded="false" aria-controls="faq-answer-1">Do I need an account?</button>
+            </h3>
+            <p class="faq-answer" id="faq-answer-1" hidden>No. VintageTape has no logins. You can look at the demo registration form on the Register page, but it does not create an account.</p>
+          </div>
 
-          <details class="faq-item">
-            <summary>Which genres does VintageTape cover?</summary>
-            <p>The Playlists page shows six genres: Rock, Noise Pop, k-pop, Neo, J-pop and Indie.</p>
-          </details>
+          <div class="faq-item">
+            <h3 class="faq-heading">
+              <button type="button" class="faq-question" id="faq-button-2" aria-expanded="false" aria-controls="faq-answer-2">Which genres does VintageTape cover?</button>
+            </h3>
+            <p class="faq-answer" id="faq-answer-2" hidden>The Playlists page shows six genres: Rock, Noise Pop, k-pop, Neo, J-pop and Indie.</p>
+          </div>
 
-          <details class="faq-item">
-            <summary>Is VintageTape a streaming app?</summary>
-            <p>No. It is a themed catalog concept. It does not play music; it brings back the feel of flipping through a disc collection.</p>
-          </details>
+          <div class="faq-item">
+            <h3 class="faq-heading">
+              <button type="button" class="faq-question" id="faq-button-3" aria-expanded="false" aria-controls="faq-answer-3">Is VintageTape a streaming app?</button>
+            </h3>
+            <p class="faq-answer" id="faq-answer-3" hidden>No. It is a themed catalog concept. It does not play music; it brings back the feel of flipping through a disc collection.</p>
+          </div>
 
-          <details class="faq-item">
-            <summary>What does the contact form check?</summary>
-            <p>Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid you see a demo message. Nothing is sent or stored.</p>
-          </details>
+          <div class="faq-item">
+            <h3 class="faq-heading">
+              <button type="button" class="faq-question" id="faq-button-4" aria-expanded="false" aria-controls="faq-answer-4">What does the contact form check?</button>
+            </h3>
+            <p class="faq-answer" id="faq-answer-4" hidden>Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid you see a demo message. Nothing is sent or stored.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -138,5 +148,7 @@
   </footer>
 
   <script src="js/forms.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/faq.js" defer></script>
 </body>
 </html>

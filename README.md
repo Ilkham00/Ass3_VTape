@@ -28,36 +28,46 @@ Group: MT-2503
 ## Repository
 [https://github.com/Ilkham00/Ass3_VTape]
 
-## Forms and Validation (Assignment 4, Part 1)
+## DOM Manipulation and Events (Assignment 5, Part 1)
 
-### How to open the forms
-Open `index.html` in a browser (internet is needed for Bootstrap and fonts). Contact form: menu -> Contacts. Registration form: menu -> Register.
+### How to open
+Open `index.html` in a browser (internet is needed for fonts and Bootstrap on the form pages). Every feature has a label "Task N" on the page.
+
+### Features
+| Task | Page | Files | What it does |
+|---|---|---|---|
+| Task 0 - welcome message | index.html | js/welcome.js | name input and button, shows a welcome message (empty or spaces: helpful message) |
+| Task 1 - light / dark theme | all pages (button in the header) | js/theme.js, css/features.css | `classList.toggle('light-theme')`, button text shows the next action; choice saved in `localStorage`, so it stays on all pages |
+| Task 2 - FAQ | contacts.html | js/faq.js | 4 question buttons show and hide their answers, `aria-expanded` is updated |
+| Task 3 - live search | playlists.html | js/search.js | filters the 6 genre cards on the `input` event, shows the count and "No results found" |
+| Task 4 - favourites list | playlists.html | js/favourites.js | form adds items (`submit`, `preventDefault`), each item has its own Remove button, item count |
+
+Plain JavaScript is used in external files with `defer` and `addEventListener()`. User text is shown with `textContent`.
 
 ### Tests
+Tested in Chromium on 24 October 2026.
 
 | # | Case | Test input | Expected result | Actual result |
 |---|---|---|---|---|
-| 1 | Contact: empty fields | all empty, Submit | all fields red | As expected |
-| 2 | Contact: invalid email | `abc`, `user@domain`, `user@@example.com` | email red | As expected |
-| 3 | Contact: name too short | `A` | name red | As expected |
-| 4 | Contact: message too short / too long | `short`; paste 520 characters | red; only 500 kept | As expected |
-| 5 | Contact: valid data | `Al`, `user@example.com`, `Hello, I would like a rock catalog.` | green, demo message | As expected |
-| 6 | Register: empty required fields | all empty, Submit | 6 required fields red | As expected |
-| 7 | Register: invalid email | `bad` | email red | As expected |
-| 8 | Register: password shorter than 8 | `1234567` | password red | As expected |
-| 9 | Register: passwords do not match | `12345678` and `12345679` | confirm red, turns green after correction | As expected |
-| 10 | Register: no country | other fields valid, Submit | country red, no success message | As expected |
-| 11 | Register: all required values valid | `Ilkham`, `Amirzhanov`, `ilkham@example.com`, `12345678` twice, Kazakhstan | demo message, form cleared | As expected |
-| 12 | Register: Reset after errors | Submit empty, type `123` and `999`, Reset | values, colours and messages removed | As expected |
-| 13 | Layout | 320, 375, 768, 1024, 1440 px | no horizontal scroll, name fields stacked on phone | As expected |
-
-### Screenshots
-Valid, invalid and responsive screenshots are in the `screenshots/` folder and in the report.
+| 1 | Task 0: empty name | nothing / three spaces, click the button | message "Please enter your name first." | As expected |
+| 2 | Task 0: name with spaces | `  Ilkham  ` | "Welcome to VintageTape, Ilkham!" | As expected |
+| 3 | Task 0: HTML in the name | `<b>Bob</b>` | shown as plain text | As expected |
+| 4 | Task 1: theme | click the theme button twice | light theme, then the original dark theme; button text changes each time; the chosen theme stays when another page is opened | As expected on all 5 pages |
+| 5 | Task 2: open and close | click question 2, then 3, then 2 again | answers open and close independently, `aria-expanded` matches | As expected |
+| 6 | Task 2: keyboard | Tab to a question, Enter / Space | answer opens / closes | As expected |
+| 7 | Task 3: search | `  RoCk ` | 1 card shown, "Showing 1 of 6 genres" | As expected |
+| 8 | Task 3: search `pop` | `pop` | Noise Pop, k-pop and J-pop shown (3 of 6) | As expected |
+| 9 | Task 3: nothing found | `zzz` | 0 cards, "No results found" | As expected |
+| 10 | Task 3: clear search | empty field | all 6 cards, message hidden | As expected |
+| 11 | Task 4: empty text | nothing / spaces, Add or Enter | nothing added, error message | As expected |
+| 12 | Task 4: add items | `Rock`, `<i>Indie</i>`, `k-pop` | 3 items, "Items: 3", no page reload | As expected |
+| 13 | Task 4: remove | Remove on the middle item, then the others | only that item is removed, count is correct each time | As expected |
+| 14 | Layout | 320, 375, 768, 1024, 1440 px | no horizontal scroll on all pages | As expected |
 
 ### Contributions
 | Member | Contribution |
 |---|---|
-| Amirzhanov Ilkham | register.html, password check in js/forms.js |
-| Alibaeva Zhanel | tests, this README, screenshots |
-| Kussainova Aizada | form styles in css/, Register link in menu and footer |
-| Zholdanova Elnura | contacts.html (Tasks 0-2) |
+| Amirzhanov Ilkham | Task 0 (index.html, js/welcome.js), Task 4 (favourites list, js/favourites.js) |
+| Alibaeva Zhanel | Task 1 (js/theme.js, light theme in css/features.css), tests and screenshots |
+| Kussainova Aizada | Task 3 (search on playlists.html, js/search.js) |
+| Zholdanova Elnura | Task 2 (FAQ buttons on contacts.html, js/faq.js) |

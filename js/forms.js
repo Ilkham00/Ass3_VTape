@@ -1,3 +1,5 @@
+// Forms for contacts.html and register.html
+
 var forms = document.querySelectorAll('.needs-validation');
 
 for (var i = 0; i < forms.length; i++) {

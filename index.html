@@ -12,6 +12,7 @@
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/features.css">
 </head>
 
 <body>
@@ -30,6 +31,7 @@
         <li><a href="playlists.html">Playlists(!)</a></li>
         <li><a href="contacts.html">Contacts</a></li>
         <li><a href="register.html">Register</a></li>
+        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
       </ul>
     </nav>
   </header>
@@ -81,6 +83,22 @@
       </div>
     </section>
 
+    <!-- TASK 0: welcome message -->
+    <section class="memory-section" aria-labelledby="welcome-title">
+      <div class="page-shell">
+        <p class="faq-kicker feature-kicker">Task 0 - Select elements and update content</p>
+        <h2 id="welcome-title" class="benefits-title">Say hello to VintageTape</h2>
+
+        <div class="contacts-card tool-card">
+          <label for="name-input" class="tool-label">Your name</label>
+          <input type="text" id="name-input" class="tool-input" placeholder="For example: Ilkham">
+          <button type="button" id="welcome-button" class="btn-submit">Show welcome</button>
+
+          <p id="welcome-message" class="demo-note tool-message" aria-live="polite">Type your name and press the button.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- FEATURED PLAYLISTS -->
     <section class="memory-section featured-section" aria-labelledby="featured-title">
 
@@ -118,5 +136,7 @@
     </div>
   </footer>
 
+  <script src="js/theme.js" defer></script>
+  <script src="js/welcome.js" defer></script>
 </body>
 </html>
