@@ -83,19 +83,19 @@
       </div>
     </section>
 
-    <!-- TASK 0: welcome message -->
+    <!-- WELCOME MESSAGE -->
     <section class="memory-section" aria-labelledby="welcome-title">
       <div class="page-shell">
-        <p class="faq-kicker feature-kicker">Task 0 - Select elements and update content</p>
+        <p class="faq-kicker feature-kicker">Nice to meet you</p>
         <h2 id="welcome-title" class="benefits-title">Say hello to VintageTape</h2>
 
-        <div class="contacts-card tool-card">
+        <form id="welcome-form" class="contacts-card tool-card" novalidate>
           <label for="name-input" class="tool-label">Your name</label>
-          <input type="text" id="name-input" class="tool-input" placeholder="For example: Ilkham">
-          <button type="button" id="welcome-button" class="btn-submit">Show welcome</button>
+          <input type="text" id="name-input" class="tool-input" maxlength="30" autocomplete="given-name" placeholder="For example: Ilkham">
+          <button type="submit" id="welcome-button" class="btn-submit">Show welcome</button>
 
           <p id="welcome-message" class="demo-note tool-message" aria-live="polite">Type your name and press the button.</p>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -136,6 +136,7 @@
     </div>
   </footer>
 
+  <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
   <script src="js/welcome.js" defer></script>
 </body>

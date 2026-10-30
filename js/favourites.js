@@ -1,53 +1,136 @@
-// Task 4 - Create and remove elements (playlists.html)
+// Task 4 - Manage dynamic content: favourites list (playlists.html)
+// Remove buttons and the "+ Favourite" buttons use delegated .on() handlers.
 
-var form = document.getElementById('favourites-form');
-var input = document.getElementById('favourite-input');
-var list = document.getElementById('favourite-list');
-var count = document.getElementById('favourite-count');
-var errorMessage = document.getElementById('favourite-error');
+$(function () {
+  const $form = $('#favourites-form');
+  const $input = $('#favourite-input');
+  const $list = $('#favourite-list');
+  const $count = $('#favourite-count');
+  const $empty = $('#favourite-empty');
+  const $error = $('#favourite-error');
+  const $status = $('#favourite-status');
+  const storageKey = 'vintagetape-favourites';
 
-// shows the number of items (counted from the real list)
-function updateCount() {
-  count.textContent = 'Items: ' + list.children.length;
-}
+  $status.hide();
 
-form.addEventListener('submit', function (event) {
-  event.preventDefault(); // the page is not reloaded
-
-  var text = input.value.trim();
-
-  // empty or only spaces is not allowed
-  if (text === '') {
-    errorMessage.textContent = 'Please type something before adding.';
-    errorMessage.hidden = false;
-    return;
+  // the names that are in the list now
+  function getNames() {
+    return $list.find('.favourite-text').map(function () {
+      return $(this).text();
+    }).get();
   }
-  errorMessage.hidden = true;
 
-  // create the list item
-  var item = document.createElement('li');
-  item.className = 'favourite-item';
+  function exists(name) {
+    const lower = name.toLowerCase();
+    return getNames().some(function (item) {
+      return item.toLowerCase() === lower;
+    });
+  }
 
-  var itemText = document.createElement('span');
-  itemText.textContent = text;
+  // count, empty-state message, card buttons and saved copy always match the list
+  function refresh() {
+    const total = $list.children('.favourite-item').length;
+    $count.text('Items: ' + total);
+    $empty.toggleClass('is-hidden', total !== 0);
 
-  var removeButton = document.createElement('button');
-  removeButton.type = 'button';
-  removeButton.className = 'btn-reset remove-button';
-  removeButton.textContent = 'Remove';
-  removeButton.setAttribute('aria-label', 'Remove ' + text);
+    $('.add-favourite').each(function () {
+      const added = exists($(this).attr('data-name'));
+      $(this)
+        .toggleClass('added', added)
+        .attr('aria-pressed', added ? 'true' : 'false')
+        .text(added ? 'In favourites' : '+ Favourite');
+    });
 
-  // this button removes only its own item
-  removeButton.addEventListener('click', function () {
-    item.remove();
-    updateCount();
+    try {
+      localStorage.setItem(storageKey, JSON.stringify(getNames()));
+    } catch (error) {
+      // the list still works without saving
+    }
+  }
+
+  // second effect: a short message fades in and out; the count above stays visible
+  function showStatus(text) {
+    $status.stop(true, true).text(text).fadeIn(200).delay(1800).fadeOut(400);
+  }
+
+  function addItem(name) {
+    const $item = $('<li class="favourite-item"></li>');
+    // .text() inserts the user text safely
+    $('<span class="favourite-text"></span>').text(name).appendTo($item);
+    $('<button type="button" class="btn-reset remove-button"></button>')
+      .text('Remove')
+      .attr('aria-label', 'Remove ' + name)
+      .appendTo($item);
+    $list.append($item);
+  }
+
+  function removeItem(name) {
+    $list.find('.favourite-item').filter(function () {
+      return $(this).find('.favourite-text').text().toLowerCase() === name.toLowerCase();
+    }).remove();
+  }
+
+  // saved list from the last visit
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey));
+    if (Array.isArray(saved)) {
+      saved.forEach(function (name) {
+        if (typeof name === 'string' && name !== '') {
+          addItem(name);
+        }
+      });
+    }
+  } catch (error) {
+    // no saved list
+  }
+  refresh();
+
+  // add by the form
+  $form.on('submit', function (event) {
+    event.preventDefault();
+
+    const text = $.trim($input.val());
+
+    if (text === '') {
+      $input.val('');
+      $error.text('Please type something before adding.').removeClass('is-hidden');
+      return;
+    }
+    if (exists(text)) {
+      $error.text(text + ' is already in the list.').removeClass('is-hidden');
+      return;
+    }
+
+    $error.addClass('is-hidden');
+    addItem(text);
+    refresh();
+    showStatus('Added: ' + text);
+    $input.val('').trigger('focus');
   });
 
-  item.append(itemText);
-  item.append(removeButton);
-  list.append(item);
+  $input.on('input', function () {
+    $error.addClass('is-hidden');
+  });
 
-  input.value = '';
-  input.focus();
-  updateCount();
+  // delegated: works for items that were added later
+  $list.on('click', '.remove-button', function () {
+    const name = $(this).siblings('.favourite-text').text();
+    $(this).closest('.favourite-item').remove();
+    refresh();
+    showStatus('Removed: ' + name);
+  });
+
+  // delegated: the button of a playlist card adds or removes that genre
+  $('#playlists-grid').on('click', '.add-favourite', function () {
+    const name = $(this).attr('data-name');
+
+    if (exists(name)) {
+      removeItem(name);
+      showStatus('Removed: ' + name);
+    } else {
+      addItem(name);
+      showStatus('Added: ' + name);
+    }
+    refresh();
+  });
 });

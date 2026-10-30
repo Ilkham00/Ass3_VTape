@@ -1,17 +1,31 @@
-// Task 0 - Select elements and update content (index.html)
+// Task 1 - Select elements and handle events: welcome message (index.html)
+// Events: submit (button or Enter) and input (while typing).
 
-var nameInput = document.getElementById('name-input');
-var welcomeButton = document.getElementById('welcome-button');
-var welcomeMessage = document.querySelector('#welcome-message');
+$(function () {
+  const $form = $('#welcome-form');
+  const $name = $('#name-input');
+  const $message = $('#welcome-message');
+  const startText = 'Type your name and press the button.';
 
-welcomeButton.addEventListener('click', function () {
-  // read the value and remove spaces at the start and the end
-  var name = nameInput.value.trim();
+  $form.on('submit', function (event) {
+    event.preventDefault(); // the page is not reloaded
 
-  if (name === '') {
-    welcomeMessage.textContent = 'Please enter your name first.';
-  } else {
-    // textContent is used (not innerHTML), so the text is shown as plain text
-    welcomeMessage.textContent = 'Welcome to VintageTape, ' + name + '!';
-  }
+    // read the value and remove spaces at the start and the end
+    const name = $.trim($name.val());
+
+    if (name === '') {
+      $name.val('');
+      $message.addClass('tool-error').text('Please enter your name first.');
+    } else {
+      // .text() shows the name as plain text, never as HTML
+      $message.removeClass('tool-error').text('Welcome to VintageTape, ' + name + '!');
+    }
+  });
+
+  // when the field is emptied the message goes back to the start text
+  $name.on('input', function () {
+    if ($.trim($name.val()) === '') {
+      $message.removeClass('tool-error').text(startText);
+    }
+  });
 });

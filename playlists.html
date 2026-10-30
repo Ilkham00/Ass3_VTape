@@ -46,57 +46,74 @@
 
         <h1 id="playlists-title" class="playlists-title">Choose a genre and plan your own catalog</h1>
 
-        <!-- TASK 3: live search -->
-        <p class="faq-kicker feature-kicker">Task 3 - Filter content as the user types</p>
+        <!-- search and category filter -->
+        <p class="faq-kicker feature-kicker">Find your genre</p>
         <div class="contacts-card tool-card search-card">
           <label for="search-input" class="tool-label">Search genres</label>
-          <input type="text" id="search-input" class="tool-input" placeholder="For example: rock">
+          <input type="text" id="search-input" class="tool-input" autocomplete="off" placeholder="For example: rock">
+
+          <p id="category-label" class="tool-label">Category</p>
+          <div class="category-row" role="group" aria-labelledby="category-label">
+            <button type="button" class="category-button active" data-category="all" aria-pressed="true">All</button>
+            <button type="button" class="category-button" data-category="guitar" aria-pressed="false">Guitar</button>
+            <button type="button" class="category-button" data-category="pop" aria-pressed="false">Pop</button>
+            <button type="button" class="category-button" data-category="asia" aria-pressed="false">Asia</button>
+          </div>
+
+          <button type="button" id="clear-filters" class="btn-reset clear-button">Clear filters</button>
+
           <p id="search-count" class="demo-note tool-message" aria-live="polite">Showing 6 of 6 genres</p>
-          <p id="no-results" class="demo-note tool-message" hidden>No results found</p>
+          <p id="no-results" class="demo-note tool-message is-hidden">No results found</p>
         </div>
 
         <div class="playlists-grid" id="playlists-grid">
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="guitar">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-rock.png" alt="Rock playlist disc" class="card-image">
             </figure>
             <h2>Rock</h2>
+            <button type="button" class="add-favourite" data-name="Rock" aria-pressed="false">+ Favourite</button>
           </article>
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="guitar pop">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-noise-pop.png" alt="Noise Pop playlist disc" class="card-image">
             </figure>
             <h2>Noise Pop</h2>
+            <button type="button" class="add-favourite" data-name="Noise Pop" aria-pressed="false">+ Favourite</button>
           </article>
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="pop asia">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-kpop.png" alt="K-pop playlist disc" class="card-image">
             </figure>
             <h2>k-pop</h2>
+            <button type="button" class="add-favourite" data-name="k-pop" aria-pressed="false">+ Favourite</button>
           </article>
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="pop">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-neo.png" alt="Neo playlist disc" class="card-image">
             </figure>
             <h2>Neo</h2>
+            <button type="button" class="add-favourite" data-name="Neo" aria-pressed="false">+ Favourite</button>
           </article>
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="pop asia">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-jpop.png" alt="J-pop playlist disc" class="card-image">
             </figure>
             <h2>J-pop</h2>
+            <button type="button" class="add-favourite" data-name="J-pop" aria-pressed="false">+ Favourite</button>
           </article>
 
-          <article class="playlist-card">
+          <article class="playlist-card" data-category="guitar">
             <figure class="image-slot playlist-disc">
               <img src="images/disc-indie.png" alt="Indie playlist disc" class="card-image">
             </figure>
             <h2>Indie</h2>
+            <button type="button" class="add-favourite" data-name="Indie" aria-pressed="false">+ Favourite</button>
           </article>
 
         </div>
@@ -104,21 +121,23 @@
       </div>
     </section>
 
-    <!-- TASK 4: favourites list -->
+    <!-- favourites list -->
     <section class="memory-section" aria-labelledby="favourites-title">
       <div class="page-shell">
-        <p class="faq-kicker feature-kicker">Task 4 - Create and remove elements</p>
+        <p class="faq-kicker feature-kicker">Your shortlist</p>
         <h2 id="favourites-title" class="benefits-title">My favourite genres</h2>
 
         <div class="contacts-card tool-card">
           <form id="favourites-form" novalidate>
             <label for="favourite-input" class="tool-label">Add a genre or a playlist</label>
-            <input type="text" id="favourite-input" class="tool-input" placeholder="For example: Indie">
+            <input type="text" id="favourite-input" class="tool-input" maxlength="30" autocomplete="off" placeholder="For example: Indie">
             <button type="submit" class="btn-submit">Add</button>
           </form>
 
-          <p id="favourite-error" class="demo-note tool-message tool-error" hidden></p>
+          <p id="favourite-error" class="demo-note tool-message tool-error is-hidden" role="alert"></p>
+          <p id="favourite-status" class="demo-note tool-message favourite-status" role="status"></p>
           <p id="favourite-count" class="demo-note tool-message" aria-live="polite">Items: 0</p>
+          <p id="favourite-empty" class="favourite-empty">Your list is empty. Add a genre above or press “+ Favourite” on a card.</p>
           <ul id="favourite-list" class="favourite-list"></ul>
         </div>
       </div>
@@ -131,12 +150,12 @@
           <h2 id="make-it-yours-title">Make it yours</h2>
           <p>
             Pick a genre, choose 10-14 tracks and give your playlist a name.
-            VintageTape is a static concept website, so playlists are not saved or shared here.
+            VintageTape is a static concept website: your shortlist is only remembered in this browser and nothing is sent anywhere.
           </p>
           <ol>
-            <li>Choose a genre from the grid above.</li>
+            <li>Search or filter the genres above and add your favourites to the list.</li>
             <li>Write down 10-14 tracks and a name for your playlist.</li>
-            <li>Open the demo contact form to see how a request would look.</li>
+            <li>Open the demo contact form and send your wish list (demonstration only).</li>
           </ol>
         </div>
 
@@ -160,6 +179,7 @@
     </div>
   </footer>
 
+  <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
   <script src="js/search.js" defer></script>
   <script src="js/favourites.js" defer></script>

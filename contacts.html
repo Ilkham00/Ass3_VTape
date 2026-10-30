@@ -52,7 +52,7 @@
 
           <p class="demo-note">Demo only. Your information is not sent or stored. Use sample details.</p>
 
-          <div id="contact-success" class="alert alert-success d-none">
+          <div id="contact-success" class="alert alert-success" role="status">
             Demo only: your message looks valid. Nothing was sent or stored.
           </div>
 
@@ -69,7 +69,7 @@
             <div class="col-md-6">
               <label for="contact-email" class="form-label">Email</label>
               <input type="email" class="form-control" id="contact-email" name="email"
-                     placeholder="name@example.com" required pattern=".+@.+\..+">
+                     placeholder="name@example.com"  required>
               <div class="form-text">Example: name@example.com</div>
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Please enter an email like name@example.com.</div>
@@ -77,6 +77,10 @@
 
             <div class="col-12">
               <label for="contact-message" class="form-label">Message</label>
+              <p id="favourites-hint" class="form-text favourites-hint is-hidden">
+                You saved favourites on the Playlists page.
+                <button type="button" id="use-favourites" class="link-button">Add them to my message</button>
+              </p>
               <textarea class="form-control" id="contact-message" name="message" rows="5"
                         placeholder="Which genre should our next catalog cover?"
                         required minlength="10" maxlength="500"></textarea>
@@ -96,7 +100,7 @@
 
     <section id="faq" class="memory-section faq-section" aria-labelledby="faq-title">
       <div class="page-shell">
-        <p class="faq-kicker">FAQ - Task 2 - Show and hide information</p>
+        <p class="faq-kicker">FAQ</p>
         <h2 id="faq-title" class="faq-title">Before you write</h2>
 
         <div class="faq-list">
@@ -104,28 +108,28 @@
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-1" aria-expanded="false" aria-controls="faq-answer-1">Do I need an account?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-1" hidden>No. VintageTape has no logins. You can look at the demo registration form on the Register page, but it does not create an account.</p>
+            <p class="faq-answer" id="faq-answer-1">No. VintageTape has no logins. You can look at the demo registration form on the Register page, but it does not create an account.</p>
           </div>
 
           <div class="faq-item">
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-2" aria-expanded="false" aria-controls="faq-answer-2">Which genres does VintageTape cover?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-2" hidden>The Playlists page shows six genres: Rock, Noise Pop, k-pop, Neo, J-pop and Indie.</p>
+            <p class="faq-answer" id="faq-answer-2">The Playlists page shows six genres: Rock, Noise Pop, k-pop, Neo, J-pop and Indie.</p>
           </div>
 
           <div class="faq-item">
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-3" aria-expanded="false" aria-controls="faq-answer-3">Is VintageTape a streaming app?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-3" hidden>No. It is a themed catalog concept. It does not play music; it brings back the feel of flipping through a disc collection.</p>
+            <p class="faq-answer" id="faq-answer-3">No. It is a themed catalog concept. It does not play music; it brings back the feel of flipping through a disc collection.</p>
           </div>
 
           <div class="faq-item">
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-4" aria-expanded="false" aria-controls="faq-answer-4">What does the contact form check?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-4" hidden>Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid you see a demo message. Nothing is sent or stored.</p>
+            <p class="faq-answer" id="faq-answer-4">Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid you see a demo message. Nothing is sent or stored.</p>
           </div>
         </div>
       </div>
@@ -147,8 +151,10 @@
     </div>
   </footer>
 
-  <script src="js/forms.js" defer></script>
+  <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/forms.js" defer></script>
   <script src="js/faq.js" defer></script>
+  <script src="js/journey.js" defer></script>
 </body>
 </html>

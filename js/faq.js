@@ -1,21 +1,23 @@
-// Task 2 - Show and hide information (contacts.html)
+// Task 2 - Animated interface elements: FAQ with slide effects (contacts.html)
 
-var questions = document.querySelectorAll('.faq-question');
+$(function () {
+  // answers are closed at the start
+  $('.faq-answer').hide();
 
-for (var i = 0; i < questions.length; i++) {
-  questions[i].addEventListener('click', function () {
-    var button = this;
-    var answer = document.getElementById(button.getAttribute('aria-controls'));
+  $('.faq-question').on('click', function () {
+    const $button = $(this);
+    const $answer = $('#' + $button.attr('aria-controls'));
+    const isOpen = $button.attr('aria-expanded') === 'true';
 
-    // each answer works on its own
-    if (answer.hidden) {
-      answer.hidden = false;
-      button.setAttribute('aria-expanded', 'true');
+    // stop(true, true) finishes the running animation first, so fast clicks do not make a queue
+    $answer.stop(true, true).slideToggle(250);
+
+    if (isOpen) {
+      $button.attr('aria-expanded', 'false');
     } else {
-      answer.hidden = true;
-      button.setAttribute('aria-expanded', 'false');
+      $button.attr('aria-expanded', 'true');
     }
   });
-}
 
-// The questions are <button> elements, so Enter and Space also work from the keyboard.
+  // The questions are <button> elements, so Enter and Space also work from the keyboard.
+});

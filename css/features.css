@@ -1,13 +1,13 @@
 .feature-kicker {
   text-align: center;
 }
- 
+
 /* ---------- card with a form field (same card as the contact form) ---------- */
- 
+
 .tool-card {
   margin: 0 auto 24px;
 }
- 
+
 .tool-label {
   display: block;
   margin-bottom: 0.5rem;
@@ -15,7 +15,7 @@
   font-size: 0.95rem;
   color: #111;
 }
- 
+
 /* looks like the Bootstrap .form-control used in the forms */
 .tool-input {
   display: block;
@@ -30,38 +30,36 @@
   font-size: 0.95rem;
   line-height: 1.5;
 }
- 
+
 .tool-input:focus {
   border-color: #86b7fe;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   outline: 0;
 }
- 
+
 /* messages use the .demo-note style of the site */
 .tool-message {
   margin: 16px 0 0;
 }
- 
+
 .tool-error {
   border-left-color: #b02a37;
   color: #842029;
 }
- 
+
 .search-card {
   position: relative;
   z-index: 1;
   margin-bottom: 44px;
 }
- 
-/* the hidden attribute must win over the display rules of the site */
-.playlist-card[hidden],
-.tool-message[hidden],
-.faq-answer[hidden] {
-  display: none;
+
+/* jQuery adds and removes this class to hide and show blocks */
+.is-hidden {
+  display: none !important;
 }
- 
+
 /* ---------- Task 1: theme button (inside the menu) ---------- */
- 
+
 .theme-button {
   padding: 0.45rem 0.8rem;
   border: 1px solid #111;
@@ -71,19 +69,19 @@
   font: inherit;
   cursor: pointer;
 }
- 
+
 .theme-button:hover,
 .theme-button:focus-visible {
   background: rgba(0, 0, 0, 0.1);
 }
- 
+
 /* ---------- Task 2: FAQ buttons (look like the old questions) ---------- */
- 
+
 .faq-heading {
   margin: 0;
   font-size: inherit;
 }
- 
+
 .faq-question {
   display: block;
   width: 100%;
@@ -97,35 +95,35 @@
   text-align: left;
   cursor: pointer;
 }
- 
+
 .faq-question:hover {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
- 
+
 .faq-question::after {
   content: " +";
 }
- 
+
 .faq-question[aria-expanded="true"]::after {
   content: " -";
 }
- 
+
 .faq-answer {
   margin: 12px 0 0;
   font-size: 0.88rem;
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.8);
 }
- 
+
 /* ---------- Task 4: favourites list ---------- */
- 
+
 .favourite-list {
   margin: 8px 0 0;
   padding: 0;
   list-style: none;
 }
- 
+
 .favourite-item {
   display: flex;
   justify-content: space-between;
@@ -136,20 +134,20 @@
   font-size: 0.95rem;
   word-break: break-word;
 }
- 
+
 .remove-button {
   flex-shrink: 0;
   padding: 6px 16px;
   border-radius: 12px;
   font-size: 0.85rem;
 }
- 
+
 /* =========================================================
    Task 1: LIGHT THEME  (class "light-theme" on <body>)
    The light cards of the site get a border and a shadow, so they
    stay visible on the light page. Text that was white becomes dark.
    ========================================================= */
- 
+
 /* the same invisible border in both themes, so the layout does not move
    by 2px when the theme is changed */
 .benefit-card,
@@ -161,14 +159,14 @@
 .site-nav {
   border: 1px solid transparent;
 }
- 
+
 body.light-theme {
   color: #111;
   background:
     radial-gradient(circle at 66% 78%, rgba(255, 255, 255, 0.35), transparent 28%),
     linear-gradient(115deg, #d8d3c9 0%, #cbc5b9 100%);
 }
- 
+
 /* white text -> dark text */
 body.light-theme .idea-title,
 body.light-theme .idea-intro,
@@ -182,36 +180,36 @@ body.light-theme .rules-card,
 body.light-theme .rules-card a {
   color: #111;
 }
- 
+
 body.light-theme .faq-kicker {
   color: rgba(0, 0, 0, 0.65);
 }
- 
+
 body.light-theme .faq-answer {
   color: rgba(0, 0, 0, 0.8);
 }
- 
+
 /* hover and focus effects that were white */
 body.light-theme .featured-list a:hover,
 body.light-theme .featured-list a:focus-visible {
   color: rgba(0, 0, 0, 0.6);
 }
- 
+
 body.light-theme .playlist-card:hover {
   background: rgba(255, 255, 255, 0.95);
 }
- 
+
 body.light-theme :focus-visible {
   outline-color: #111;
 }
- 
+
 /* translucent white cards */
 body.light-theme .playlist-card,
 body.light-theme .rules-card {
   background: rgba(255, 255, 255, 0.6);
   border-color: rgba(0, 0, 0, 0.35);
 }
- 
+
 /* light cards: border + shadow so they do not melt into the page */
 body.light-theme .benefit-card,
 body.light-theme .memory-card,
@@ -222,18 +220,18 @@ body.light-theme .demo-card {
   border-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
- 
+
 body.light-theme .site-nav {
   border-color: rgba(0, 0, 0, 0.25);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
- 
+
 /* lines between items */
 body.light-theme .faq-item,
 body.light-theme .featured-list a {
   border-color: rgba(0, 0, 0, 0.25);
 }
- 
+
 /* pictures made for the dark page: a soft shadow keeps them visible */
 body.light-theme .hero-cat,
 body.light-theme .contacts-cat,
@@ -243,10 +241,138 @@ body.light-theme .floating-disc,
 body.light-theme .playlist-disc img {
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.45));
 }
- 
+
 body.light-theme .site-footer {
   background: rgba(0, 0, 0, 0.08);
   border-top-color: rgba(0, 0, 0, 0.25);
   color: #222;
 }
- 
+
+/* =========================================================
+   Assignment 6 additions
+   ========================================================= */
+
+/* ---------- Task 3: category buttons ---------- */
+
+.category-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.category-button {
+  padding: 6px 18px;
+  border: 2px solid #111;
+  border-radius: 15px;
+  background: transparent;
+  color: #111;
+  font-family: "Iosevka Charon", monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.category-button:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.category-button.active {
+  background: #111;
+  color: #fff;
+}
+
+.clear-button {
+  padding: 6px 18px;
+  font-size: 0.85rem;
+}
+
+/* ---------- Task 4: "+ Favourite" button on every playlist card ---------- */
+
+.add-favourite {
+  margin-top: 14px;
+  padding: 6px 16px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  background: transparent;
+  color: #fff;
+  font-family: "Iosevka Charon", monospace;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.add-favourite:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.add-favourite.added {
+  background: #fff;
+  color: #111;
+}
+
+.favourite-empty {
+  margin: 16px 0 0;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.favourite-status {
+  border-left-color: #2a7a3b;
+}
+
+/* ---------- user journey: favourites in the contact form ---------- */
+
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #0b5ed7;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Task 5: field messages (also work without Bootstrap) ---------- */
+
+.contacts-card .valid-feedback,
+.contacts-card .invalid-feedback {
+  display: none;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.contacts-card .valid-feedback {
+  color: #146c43;
+}
+
+.contacts-card .invalid-feedback {
+  color: #b02a37;
+}
+
+.contacts-card .is-valid ~ .valid-feedback,
+.contacts-card .is-invalid ~ .invalid-feedback {
+  display: block;
+}
+
+.contacts-card .form-control.is-invalid,
+.contacts-card .form-select.is-invalid {
+  border-color: #b02a37;
+}
+
+.contacts-card .form-control.is-valid,
+.contacts-card .form-select.is-valid {
+  border-color: #146c43;
+}
+
+body.light-theme .add-favourite {
+  border-color: #111;
+  color: #111;
+}
+
+body.light-theme .add-favourite:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .add-favourite.added {
+  background: #111;
+  color: #fff;
+}

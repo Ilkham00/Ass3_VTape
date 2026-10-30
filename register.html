@@ -51,7 +51,7 @@
         <form id="register-form" class="contacts-card register-card needs-validation" novalidate>
           <p class="demo-note">Demo only. Use sample data, not your real password.</p>
 
-          <div id="register-success" class="alert alert-success d-none">
+          <div id="register-success" class="alert alert-success" role="status">
             Demo only: your details look valid. No account was created and nothing was sent or stored.
           </div>
 
@@ -73,7 +73,7 @@
             <div class="col-12">
               <label for="register-email" class="form-label">Email</label>
               <input type="email" class="form-control" id="register-email" name="email"
-                     placeholder="name@example.com" required pattern=".+@.+\..+">
+                     placeholder="name@example.com" required>
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Please enter an email like name@example.com.</div>
             </div>
@@ -201,7 +201,8 @@
     </div>
   </footer>
 
-  <script src="js/forms.js" defer></script>
+  <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/forms.js" defer></script>
 </body>
 </html>

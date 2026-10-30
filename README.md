@@ -28,46 +28,69 @@ Group: MT-2503
 ## Repository
 [https://github.com/Ilkham00/Ass3_VTape]
 
-## DOM Manipulation and Events (Assignment 5, Part 1)
+## Final Website (Assignment 6: jQuery and Completed Website)
+
+### Purpose
+VintageTape is a frontend-only concept website about the nostalgia of cassettes and CDs. Visitors read the idea, search and filter six playlist genres, keep a shortlist of favourites and send a demonstration enquiry. There is no backend: nothing is sent or stored on a server.
 
 ### How to open
-Open `index.html` in a browser (internet is needed for fonts and Bootstrap on the form pages). Every feature has a label "Task N" on the page.
+Open `index.html` in a browser (no build step). jQuery 3.6.0 is included as `js/jquery-3.6.0.min.js`, so it works without a CDN. Internet is only needed for the fonts and Bootstrap CSS. The public version is the link above.
 
-### Features
-| Task | Page | Files | What it does |
+### File structure
+```
+index.html  idea.html  playlists.html  contacts.html  register.html
+css/   style.css (main design)  responsive.css (screen sizes)  features.css (jQuery features, light theme)
+js/    jquery-3.6.0.min.js  theme.js  welcome.js  faq.js  search.js  favourites.js  journey.js  forms.js
+images/        pictures of the site
+screenshots/   screenshots used in the report
+```
+jQuery is loaded first on every page, then the project scripts. All handlers are attached with `.on()` inside `$(function () { ... })`. There are no inline event attributes.
+
+### Main user journey
+Home (welcome message) -> Playlists (search and category filter, add genres to favourites) -> Contacts ("Add them to my message", validated demo form) -> demonstration confirmation. The confirmation is a frontend-only simulation and says so.
+
+### Map of the jQuery features
+| Task | Page | File | Events and jQuery methods |
 |---|---|---|---|
-| Task 0 - welcome message | index.html | js/welcome.js | name input and button, shows a welcome message (empty or spaces: helpful message) |
-| Task 1 - light / dark theme | all pages (button in the header) | js/theme.js, css/features.css | `classList.toggle('light-theme')`, button text shows the next action; choice saved in `localStorage`, so it stays on all pages |
-| Task 2 - FAQ | contacts.html | js/faq.js | 4 question buttons show and hide their answers, `aria-expanded` is updated |
-| Task 3 - live search | playlists.html | js/search.js | filters the 6 genre cards on the `input` event, shows the count and "No results found" |
-| Task 4 - favourites list | playlists.html | js/favourites.js | form adds items (`submit`, `preventDefault`), each item has its own Remove button, item count |
+| 1 - welcome message | index.html | js/welcome.js | `submit`, `input`, `.val()`, `$.trim()`, `.text()`, `.addClass()`, `.removeClass()` |
+| 1 - light / dark theme | all pages | js/theme.js | `click`, `.toggleClass()`, `.hasClass()`, theme saved in `localStorage` |
+| 2 - FAQ (4 items) | contacts.html | js/faq.js | `click`, `.slideToggle()`, `.stop(true, true)`, `.attr('aria-expanded')` |
+| 2 - fading message | playlists.html | js/favourites.js | `.fadeIn()`, `.delay()`, `.fadeOut()` for "Added / Removed" |
+| 3 - search + categories | playlists.html | js/search.js | `input`, `click`, `.each()`, `.toggleClass()`, "Showing N of 6", "No results found", Clear filters |
+| 4 - favourites list | playlists.html | js/favourites.js | `submit`, delegated `.on('click', '.remove-button')` and `.on('click', '.add-favourite')`, `.append()`, `.remove()`, `.text()`, empty-state message |
+| 5 - forms | contacts.html, register.html | js/forms.js | `submit`, `input`, `focusout`, `reset`, `.val()`, `.siblings()`, field-specific messages, demo confirmation with `.fadeIn()` |
+| Journey | contacts.html | js/journey.js | reads the saved favourites and fills the message with `.val()` |
 
-Plain JavaScript is used in external files with `defer` and `addEventListener()`. User text is shown with `textContent`.
+User text is always shown with `.text()`, never as HTML.
 
 ### Tests
-Tested in Chromium on 24 October 2026.
+Tested in Chrome (viewports 375, 768 and 1440 px, dark and light theme). Test cases with steps, expected and actual results are in the report.
 
-| # | Case | Test input | Expected result | Actual result |
-|---|---|---|---|---|
-| 1 | Task 0: empty name | nothing / three spaces, click the button | message "Please enter your name first." | As expected |
-| 2 | Task 0: name with spaces | `  Ilkham  ` | "Welcome to VintageTape, Ilkham!" | As expected |
-| 3 | Task 0: HTML in the name | `<b>Bob</b>` | shown as plain text | As expected |
-| 4 | Task 1: theme | click the theme button twice | light theme, then the original dark theme; button text changes each time; the chosen theme stays when another page is opened | As expected on all 5 pages |
-| 5 | Task 2: open and close | click question 2, then 3, then 2 again | answers open and close independently, `aria-expanded` matches | As expected |
-| 6 | Task 2: keyboard | Tab to a question, Enter / Space | answer opens / closes | As expected |
-| 7 | Task 3: search | `  RoCk ` | 1 card shown, "Showing 1 of 6 genres" | As expected |
-| 8 | Task 3: search `pop` | `pop` | Noise Pop, k-pop and J-pop shown (3 of 6) | As expected |
-| 9 | Task 3: nothing found | `zzz` | 0 cards, "No results found" | As expected |
-| 10 | Task 3: clear search | empty field | all 6 cards, message hidden | As expected |
-| 11 | Task 4: empty text | nothing / spaces, Add or Enter | nothing added, error message | As expected |
-| 12 | Task 4: add items | `Rock`, `<i>Indie</i>`, `k-pop` | 3 items, "Items: 3", no page reload | As expected |
-| 13 | Task 4: remove | Remove on the middle item, then the others | only that item is removed, count is correct each time | As expected |
-| 14 | Layout | 320, 375, 768, 1024, 1440 px | no horizontal scroll on all pages | As expected |
+| # | Case | Result |
+|---|---|---|
+| 1 | Welcome: empty / spaces / `  Ilkham  ` / `<b>Ann</b>` | pass |
+| 2 | Theme stays after opening another page (all 5 pages) | pass |
+| 3 | FAQ: open, close, independent items, Enter and Space | pass |
+| 4 | FAQ: 10 fast clicks, no animation queue | pass |
+| 5 | Search: case, spaces, `pop`, `zzz` ("No results found") | pass |
+| 6 | Category + search together, All, Clear filters | pass |
+| 7 | Favourites: empty and duplicate values rejected, HTML shown as text | pass |
+| 8 | Favourites: delegated Remove, empty state after the last item, saved after reload | pass |
+| 9 | Contact form: empty and invalid values, field-specific messages, no success | pass |
+| 10 | Contact form: valid data, demo confirmation, fields reset | pass |
+| 11 | Register form: password mismatch, country, valid data, Reset | pass |
+| 12 | No horizontal scroll, no JavaScript errors on all pages | pass |
+
+Second browser (Edge): _to be filled in by the team after the retest on the published site._
+
+### Frontend-only limitations
+Forms do not send anything and no account is created. The favourites list is saved only in the browser of the visitor (`localStorage`).
 
 ### Contributions
-| Member | Contribution |
-|---|---|
-| Amirzhanov Ilkham | Task 0 (index.html, js/welcome.js), Task 4 (favourites list, js/favourites.js) |
-| Alibaeva Zhanel | Task 1 (js/theme.js, light theme in css/features.css), tests and screenshots |
-| Kussainova Aizada | Task 3 (search on playlists.html, js/search.js) |
-| Zholdanova Elnura | Task 2 (FAQ buttons on contacts.html, js/faq.js) |
+| Member | Implemented | Reviewed / tested |
+|---|---|---|
+| Amirzhanov Ilkham | welcome message (index.html, js/welcome.js), favourites list and fading message (js/favourites.js), register.html validation | contacts.html form, README |
+| Alibaeva Zhanel | theme button and light theme (js/theme.js, css/features.css), idea.html, responsive checks | favourites list, accessibility check |
+| Kussainova Aizada | search and category filter (playlists.html, js/search.js) | welcome message, test table |
+| Zholdanova Elnura | FAQ slide effects (contacts.html, js/faq.js), contact form validation and journey (js/forms.js, js/journey.js) | search and category filter, report |
+Repository history (commits per member) is the evidence of these contributions.

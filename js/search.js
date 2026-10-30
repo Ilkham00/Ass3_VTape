@@ -1,26 +1,56 @@
-// Task 3 - Filter content as the user types (playlists.html)
+// Task 3 - Filter website content: search and category together (playlists.html)
 
-var searchInput = document.getElementById('search-input');
-var cards = document.querySelectorAll('#playlists-grid .playlist-card');
-var searchCount = document.getElementById('search-count');
-var noResults = document.getElementById('no-results');
+$(function () {
+  const $input = $('#search-input');
+  const $cards = $('#playlists-grid .playlist-card');
+  const $buttons = $('.category-button');
+  const $count = $('#search-count');
+  const $noResults = $('#no-results');
+  let category = 'all';
 
-searchInput.addEventListener('input', function () {
-  // ignore letter case and spaces at the start and the end
-  var text = searchInput.value.trim().toLowerCase();
-  var shown = 0;
+  // one function checks both filters for every card
+  function applyFilters() {
+    // ignore letter case and spaces at the start and the end
+    const text = $.trim($input.val()).toLowerCase();
+    let shown = 0;
 
-  for (var i = 0; i < cards.length; i++) {
-    var title = cards[i].querySelector('h2').textContent.toLowerCase();
+    $cards.each(function () {
+      const $card = $(this);
+      const title = $card.find('h2').text().toLowerCase();
+      const cardCategories = $card.attr('data-category').split(' ');
 
-    if (title.includes(text)) {
-      cards[i].hidden = false;
-      shown = shown + 1;
-    } else {
-      cards[i].hidden = true;
-    }
+      const matchesText = title.indexOf(text) !== -1;
+      const matchesCategory = category === 'all' || cardCategories.indexOf(category) !== -1;
+      const visible = matchesText && matchesCategory;
+
+      $card.toggleClass('is-hidden', !visible);
+      if (visible) {
+        shown = shown + 1;
+      }
+    });
+
+    $count.text('Showing ' + shown + ' of ' + $cards.length + ' genres');
+    $noResults.toggleClass('is-hidden', shown !== 0);
   }
 
-  searchCount.textContent = 'Showing ' + shown + ' of ' + cards.length + ' genres';
-  noResults.hidden = shown !== 0;
+  function selectCategory(name) {
+    category = name;
+    $buttons.removeClass('active').attr('aria-pressed', 'false');
+    $buttons.filter('[data-category="' + name + '"]').addClass('active').attr('aria-pressed', 'true');
+  }
+
+  $input.on('input', applyFilters);
+
+  $buttons.on('click', function () {
+    selectCategory($(this).attr('data-category'));
+    applyFilters();
+  });
+
+  // clearing both filters shows all cards again
+  $('#clear-filters').on('click', function () {
+    $input.val('');
+    selectCategory('all');
+    applyFilters();
+    $input.trigger('focus');
+  });
 });
