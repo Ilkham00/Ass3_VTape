@@ -81,7 +81,23 @@ Tested in Chrome (viewports 375, 768 and 1440 px, dark and light theme). Test ca
 | 11 | Register form: password mismatch, country, valid data, Reset | pass |
 | 12 | No horizontal scroll, no JavaScript errors on all pages | pass |
 
-Second browser (Edge): _to be filled in by the team after the retest on the published site._
+Second browser (Edge): 
+
+| # | Case | Result |
+|---|---|---|
+| 1 | Welcome: empty / spaces / `  Popi  ` / `<b>LOL</b>` | pass |
+| 2 | Theme stays after opening another page (all 5 pages) | pass |
+| 3 | FAQ: open, close, independent items, Enter and Space | pass |
+| 4 | FAQ: 10 fast clicks, no animation queue | pass |
+| 5 | Search: case, spaces, `pop`, `zzz` ("No results found") | pass |
+| 6 | Category + search together, All, Clear filters | pass |
+| 7 | Favourites: empty and duplicate values rejected, HTML shown as text | pass |
+| 8 | Favourites: delegated Remove, empty state after the last item, saved after reload | pass |
+| 9 | Contact form: empty and invalid values, field-specific messages, no success | pass |
+| 10 | Contact form: valid data, demo confirmation, fields reset | pass |
+| 11 | Register form: password mismatch, country, valid data, Reset | pass |
+| 12 | No horizontal scroll, no JavaScript errors on all pages | pass |
+
 
 ### Frontend-only limitations
 Forms do not send anything and no account is created. The favourites list is saved only in the browser of the visitor (`localStorage`).
@@ -93,4 +109,3 @@ Forms do not send anything and no account is created. The favourites list is sav
 | Alibaeva Zhanel | theme button and light theme (js/theme.js, css/features.css), idea.html, responsive checks | favourites list, accessibility check |
 | Kussainova Aizada | search and category filter (playlists.html, js/search.js) | welcome message, test table |
 | Zholdanova Elnura | FAQ slide effects (contacts.html, js/faq.js), contact form validation and journey (js/forms.js, js/journey.js) | search and category filter, report |
-Repository history (commits per member) is the evidence of these contributions.
