@@ -1,3 +1,12 @@
+/* =========================================================
+   VintageTape - interactive features (Assignment 6, jQuery)
+   Task 1 welcome and theme, Task 2 FAQ and fading message,
+   Task 3 search and categories, Task 4 favourites list, Task 5 form messages
+
+   The new blocks reuse the classes of the site: .faq-kicker, .benefits-title,
+   .contacts-card, .btn-submit, .btn-reset and .demo-note.
+   ========================================================= */
+
 /* ---------- small labels above the features ---------- */
 
 .feature-kicker {

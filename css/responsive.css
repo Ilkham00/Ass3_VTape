@@ -1,3 +1,16 @@
+/* =========================================================
+   VintageTape - responsive rules (MOBILE FIRST)
+   css/style.css holds the phone layout. This file only ADDS
+   wider layouts with min-width queries.
+
+   Breakpoint 1: 48rem (768px)  - tablet
+     Content has enough room for 2-column grids and a one-row
+     navigation bar.
+   Breakpoint 2: 64rem (1024px) - desktop
+     Content has room for 4 memory cards / 3 genre cards,
+     the contacts intro beside the form, and the decorative discs.
+   ========================================================= */
+
 /* ---------- Tablet: 48rem and wider ---------- */
 @media (min-width: 48rem) {
   .page-shell {
@@ -18,10 +31,6 @@
 
   .nav-links ul {
     justify-content: flex-end;
-    gap: 8px 16px; /* Чуть больше отступа на больших экранах */
-  }
-  .nav-links li:has(.profile-link) {
-    margin-left: 0;
   }
 
   .site-footer {
