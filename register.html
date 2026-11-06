@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VintageTape Register - a demonstration registration form for the catalog club, with password and country validation.">
+  <meta name="description" content="VintageTape Register - create a VintageTape account (saved in your browser) for the catalog club, with email, phone, password and country validation.">
   <title>Register | VintageTape</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,37 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Our Product</a></li>
-        <li><a href="idea.html">Idea</a></li>
-        <li><a href="playlists.html">Playlists(!)</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="register.html" aria-current="page">Register</a></li>
-        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
-      </ul>
-    </nav>
+  <ul>
+    <li><a href="index.html">Our Product</a></li>
+    <li><a href="idea.html">Idea</a></li>
+    <li><a href="playlists.html">Playlists</a></li>
+    <li><a href="contacts.html">Contacts</a></li>
+
+    <!-- видно только когда НЕ залогинен -->
+    <li data-auth="out"><a href="register.html" aria-current="page">Register</a></li>
+    <li data-auth="out"><a href="login.html">Log in</a></li>
+
+    <!-- иконка профиля ВСЕГДА видна и всегда ведёт на profile.html -->
+    <li>
+      <a href="profile.html" class="profile-link"
+         aria-label="Open profile" title="Profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+        </svg>
+      </a>
+    </li>
+
+    <li>
+      <button type="button" id="theme-button" class="theme-switch" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-knob">☾</span>
+        </span>
+        <span class="switch-label">Light mode</span>
+      </button>
+    </li>
+  </ul>
+</nav>
   </header>
 
   <main id="main-content">
@@ -44,16 +66,16 @@
 
         <h1 id="register-title" class="register-title">Join the VintageTape<br>catalog club</h1>
         <p class="register-intro">
-          Tell us who you are and which genres you like. This is a demonstration form:
-          no account is created and nothing is sent or stored.
+          Tell us who you are and which genres you like. The account is stored in this browser only — this project has no backend.
         </p>
 
         <form id="register-form" class="contacts-card register-card needs-validation" novalidate>
-          <p class="demo-note">Demo only. Use sample data, not your real password.</p>
+          <p class="demo-note">Use a sample password. For this project, data stays in your browser.</p>
 
           <div id="register-success" class="alert alert-success" role="status">
-            Demo only: your details look valid. No account was created and nothing was sent or stored.
+            Account created. Taking you to the log in page...
           </div>
+          <p id="register-error" class="alert alert-danger" role="alert" hidden></p>
 
           <div class="row g-3">
             <div class="col-md-6">
@@ -70,7 +92,7 @@
               <div class="invalid-feedback">Last name must be at least 2 characters.</div>
             </div>
 
-            <div class="col-12">
+            <div class="col-md-6">
               <label for="register-email" class="form-label">Email</label>
               <input type="email" class="form-control" id="register-email" name="email"
                      placeholder="name@example.com" required>
@@ -79,16 +101,25 @@
             </div>
 
             <div class="col-md-6">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required minlength="8">
-              <div class="form-text">At least 8 characters.</div>
+              <label for="phone" class="form-label">Phone number</label>
+              <input type="tel" class="form-control" id="phone" name="phone"
+                     placeholder="+7 701 123 4567" autocomplete="tel" required>
+              <div class="form-text">10 to 15 digits, for example +7 701 123 4567.</div>
               <div class="valid-feedback">Looks good!</div>
-              <div class="invalid-feedback">Password must be at least 8 characters.</div>
+              <div class="invalid-feedback">Please enter a phone number with 10 to 15 digits.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" autocomplete="new-password" required minlength="8">
+              <div class="form-text">At least 8 characters with a lower case letter, an upper case letter and a digit.</div>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please choose a stronger password.</div>
             </div>
 
             <div class="col-md-6">
               <label for="confirm-password" class="form-label">Confirm password</label>
-              <input type="password" class="form-control" id="confirm-password" name="confirmPassword" required minlength="8">
+              <input type="password" class="form-control" id="confirm-password" name="confirmPassword" autocomplete="new-password" required minlength="8">
               <div class="form-text">Type the same password again.</div>
               <div class="valid-feedback">Passwords match.</div>
               <div class="invalid-feedback">Enter at least 8 characters. Both passwords must match.</div>
@@ -174,14 +205,15 @@
     <section class="memory-section" aria-labelledby="rules-title">
       <div class="page-shell">
         <div class="rules-card">
-          <h2 id="rules-title">What this demo checks</h2>
+          <h2 id="rules-title">What this form checks</h2>
           <ul>
             <li>First and last name: required, at least 2 characters each.</li>
-            <li>Email: required, in the form name@example.com.</li>
-            <li>Password and confirmation: required, at least 8 characters, and both must match.</li>
+            <li>Email: required, in the form name@example.com, and not used by another account.</li>
+            <li>Phone number: required, 10 to 15 digits (spaces, + ( ) - are allowed).</li>
+            <li>Password: at least 8 characters with a lower case letter, an upper case letter and a digit. The confirmation must match.</li>
             <li>Country: required. Gender and favourite genres are optional.</li>
           </ul>
-          <p>Questions about the project? <a href="contacts.html">Open the contact form</a>.</p>
+          <p>Already have an account? <a href="login.html">Log in</a>. Questions about the project? <a href="contacts.html">Open the contact form</a>.</p>
         </div>
       </div>
     </section>
@@ -195,6 +227,7 @@
         <a href="playlists.html">Playlists</a>
         <a href="contacts.html">Contacts</a>
         <a href="register.html">Register</a>
+        <a href="login.html">Log in</a>
       </nav>
       <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
       <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
@@ -203,6 +236,7 @@
 
   <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/forms.js" defer></script>
 </body>
 </html>

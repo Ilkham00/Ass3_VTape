@@ -1,3 +1,4 @@
+/* ---------- Tablet: 48rem and wider ---------- */
 @media (min-width: 48rem) {
   .page-shell {
     width: min(720px, calc(100% - 48px));
@@ -270,13 +271,4 @@
   }
 }
 
-/* ---------- Respect reduced-motion settings ---------- */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
 
-  * {
-    transition: none !important;
-  }
-}

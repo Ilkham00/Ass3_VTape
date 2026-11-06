@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="VintageTape Contacts - a demonstration contact form with validation and answers to common questions.">
+  <meta name="description" content="VintageTape Contacts - a contact form with validation and answers to common questions.">
   <title>Contacts | VintageTape</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,15 +27,37 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Our Product</a></li>
-        <li><a href="idea.html">Idea</a></li>
-        <li><a href="playlists.html">Playlists(!)</a></li>
-        <li><a href="contacts.html" aria-current="page">Contacts</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
-      </ul>
-    </nav>
+  <ul>
+    <li><a href="index.html">Our Product</a></li>
+    <li><a href="idea.html">Idea</a></li>
+    <li><a href="playlists.html">Playlists</a></li>
+    <li><a href="contacts.html" aria-current="page">Contacts</a></li>
+
+    <!-- видно только когда НЕ залогинен -->
+    <li data-auth="out"><a href="register.html">Register</a></li>
+    <li data-auth="out"><a href="login.html">Log in</a></li>
+
+    <!-- иконка профиля ВСЕГДА видна и всегда ведёт на profile.html -->
+    <li>
+      <a href="profile.html" class="profile-link"
+         aria-label="Open profile" title="Profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+        </svg>
+      </a>
+    </li>
+
+    <li>
+      <button type="button" id="theme-button" class="theme-switch" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-knob">☾</span>
+        </span>
+        <span class="switch-label">Light mode</span>
+      </button>
+    </li>
+  </ul>
+</nav>
   </header>
 
   <main id="main-content">
@@ -48,12 +70,12 @@
         </div>
 
         <form id="contact-form" class="contacts-card needs-validation" novalidate>
-          <h2>Contact form<br>(demonstration)</h2>
+          <h2>Contact form<br></h2>
 
-          <p class="demo-note">Demo only. Your information is not sent or stored. Use sample details.</p>
+          <p class="demo-note">Your information is not sent or stored. Use sample details.</p>
 
           <div id="contact-success" class="alert alert-success" role="status">
-            Demo only: your message looks valid. Nothing was sent or stored.
+            Your message looks valid. Nothing was sent or stored.
           </div>
 
           <div class="row g-3">
@@ -76,6 +98,15 @@
             </div>
 
             <div class="col-12">
+              <label for="contact-phone" class="form-label">Phone number <span class="form-text d-inline">(optional)</span></label>
+              <input type="tel" class="form-control" id="contact-phone" name="phone"
+                     placeholder="+7 701 123 4567" autocomplete="tel">
+              <div class="form-text">If you fill it in: 10 to 15 digits.</div>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter a phone number with 10 to 15 digits.</div>
+            </div>
+
+            <div class="col-12">
               <label for="contact-message" class="form-label">Message</label>
               <p id="favourites-hint" class="form-text favourites-hint is-hidden">
                 You saved favourites on the Playlists page.
@@ -90,7 +121,7 @@
             </div>
 
             <div class="col-12 form-actions">
-              <button type="submit" class="btn-submit">Submit demo form</button>
+              <button type="submit" class="btn-submit">Submit form</button>
             </div>
           </div>
         </form>
@@ -108,7 +139,7 @@
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-1" aria-expanded="false" aria-controls="faq-answer-1">Do I need an account?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-1">No. VintageTape has no logins. You can look at the demo registration form on the Register page, but it does not create an account.</p>
+            <p class="faq-answer" id="faq-answer-1">Not to browse, but you can create an account on the Register page. It is saved only in your browser (localStorage) and lets you log in, see your profile and log out. Nothing is sent to a server.</p>
           </div>
 
           <div class="faq-item">
@@ -122,14 +153,14 @@
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-3" aria-expanded="false" aria-controls="faq-answer-3">Is VintageTape a streaming app?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-3">No. It is a themed catalog concept. It does not play music; it brings back the feel of flipping through a disc collection.</p>
+            <p class="faq-answer" id="faq-answer-3">No. It is a themed catalog concept and does not stream full songs. On the Playlists page you can play short previews from the iTunes Search API.</p>
           </div>
 
           <div class="faq-item">
             <h3 class="faq-heading">
               <button type="button" class="faq-question" id="faq-button-4" aria-expanded="false" aria-controls="faq-answer-4">What does the contact form check?</button>
             </h3>
-            <p class="faq-answer" id="faq-answer-4">Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid you see a demo message. Nothing is sent or stored.</p>
+            <p class="faq-answer" id="faq-answer-4">Name: at least 2 characters. Email: a valid address like name@example.com. Message: 10 to 500 characters. When everything is valid, a confirmation message appears. Nothing is sent.</p>
           </div>
         </div>
       </div>
@@ -145,6 +176,7 @@
         <a href="playlists.html">Playlists</a>
         <a href="contacts.html">Contacts</a>
         <a href="register.html">Register</a>
+        <a href="login.html">Log in</a>
       </nav>
       <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
       <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
@@ -153,6 +185,7 @@
 
   <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/forms.js" defer></script>
   <script src="js/faq.js" defer></script>
   <script src="js/journey.js" defer></script>

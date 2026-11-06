@@ -25,15 +25,37 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Our Product</a></li>
-        <li><a href="idea.html" aria-current="page">Idea</a></li>
-        <li><a href="playlists.html">Playlists(!)</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
-      </ul>
-    </nav>
+  <ul>
+    <li><a href="index.html">Our Product</a></li>
+    <li><a href="idea.html" aria-current="page">Idea</a></li>
+    <li><a href="playlists.html">Playlists</a></li>
+    <li><a href="contacts.html">Contacts</a></li>
+
+    <!-- видно только когда НЕ залогинен -->
+    <li data-auth="out"><a href="register.html">Register</a></li>
+    <li data-auth="out"><a href="login.html">Log in</a></li>
+
+    <!-- иконка профиля ВСЕГДА видна и всегда ведёт на profile.html -->
+    <li>
+      <a href="profile.html" class="profile-link"
+         aria-label="Open profile" title="Profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+        </svg>
+      </a>
+    </li>
+
+    <li>
+      <button type="button" id="theme-button" class="theme-switch" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-knob">☾</span>
+        </span>
+        <span class="switch-label">Light mode</span>
+      </button>
+    </li>
+  </ul>
+</nav>
   </header>
 
   <main id="main-content">
@@ -123,6 +145,7 @@
         <a href="playlists.html">Playlists</a>
         <a href="contacts.html">Contacts</a>
         <a href="register.html">Register</a>
+        <a href="login.html">Log in</a>
       </nav>
       <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
       <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
@@ -131,5 +154,6 @@
 
   <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </body>
 </html>

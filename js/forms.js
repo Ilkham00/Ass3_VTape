@@ -1,9 +1,12 @@
-// Task 5 - Validate a website form (contacts.html and register.html)
-// jQuery handles the submit event, checks every field and shows a message for each field.
-// Nothing is sent anywhere: a valid form only shows a demonstration message.
+// Form validation (contacts.html, register.html, login.html)
+// jQuery handles the submit event, checks every field and shows a message under each field.
+// Checked: required fields, email format, password length and complexity, phone number pattern.
+// When all fields are valid, the function in VT.formHandlers (auth.js) decides what happens next.
+// The contact form has no handler: it only shows a demonstration message.
 
 $(function () {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phonePattern = /^\+?[0-9\s\-()]+$/; // digits, spaces, ( ) - and an optional + at the start
 
   // one check for every field: it returns an error text, or '' if the value is fine
   const checks = {
@@ -12,6 +15,9 @@ $(function () {
     'last-name': makeNameCheck('last name'),
     'contact-email': checkEmail,
     'register-email': checkEmail,
+    'login-email': checkEmail,
+    'contact-phone': makePhoneCheck(false), // optional on the contact form
+    'phone': makePhoneCheck(true),          // required for sign up
     'contact-message': function (value) {
       if (value === '') {
         return 'Please write a message.';
@@ -24,14 +30,10 @@ $(function () {
       }
       return '';
     },
-    'password': function (value) {
-      if (value === '') {
-        return 'Please enter a password.';
-      }
-      if (value.length < 8) {
-        return 'The password must have at least 8 characters.';
-      }
-      return '';
+    'password': checkPassword,
+    'login-password': function (value) {
+      // the log in form only needs a value; the rules are checked when the account is created
+      return value === '' ? 'Please enter your password.' : '';
     },
     'confirm-password': function (value) {
       if (value === '') {
@@ -63,12 +65,53 @@ $(function () {
     };
   }
 
+  // returns a check function for a phone field; "required" tells if an empty value is an error
+  function makePhoneCheck(required) {
+    return function (value) {
+      if (value === '') {
+        return required ? 'Please enter your phone number.' : '';
+      }
+      if (!phonePattern.test(value)) {
+        return 'Use only digits, spaces and the signs + ( ) -.';
+      }
+      const digits = value.replace(/\D/g, '').length;
+      if (digits < 10 || digits > 15) {
+        return 'A phone number has 10 to 15 digits, for example +7 701 123 4567.';
+      }
+      return '';
+    };
+  }
+
   function checkEmail(value) {
     if (value === '') {
       return 'Please enter your email.';
     }
     if (!emailPattern.test(value)) {
       return 'Enter an email like name@example.com.';
+    }
+    return '';
+  }
+
+  // the password needs at least 8 characters, a lower case letter, an upper case letter and a digit
+  function checkPassword(value) {
+    if (value === '') {
+      return 'Please enter a password.';
+    }
+    const missing = [];
+    if (value.length < 8) {
+      missing.push('at least 8 characters');
+    }
+    if (!/[a-z]/.test(value)) {
+      missing.push('a lower case letter');
+    }
+    if (!/[A-Z]/.test(value)) {
+      missing.push('an upper case letter');
+    }
+    if (!/[0-9]/.test(value)) {
+      missing.push('a digit');
+    }
+    if (missing.length > 0) {
+      return 'The password needs ' + missing.join(', ') + '.';
     }
     return '';
   }
@@ -85,7 +128,7 @@ $(function () {
 
     // passwords keep their spaces, other fields are trimmed
     let value = $field.val();
-    if (id !== 'password' && id !== 'confirm-password') {
+    if (id !== 'password' && id !== 'confirm-password' && id !== 'login-password') {
       value = $.trim(value);
     }
 
@@ -107,7 +150,7 @@ $(function () {
 
   $('.needs-validation').each(function () {
     const $form = $(this);
-    const $success = $form.find('.alert');
+    const $success = $form.find('.alert-success');
 
     $success.hide();
 
@@ -135,7 +178,14 @@ $(function () {
         return;
       }
 
-      // valid: clear the fields and show the demonstration message
+      // all fields are valid: sign up and log in have their own handler
+      const handler = VT.formHandlers[$form.attr('id')];
+      if (handler && handler($form) === false) {
+        $success.stop(true, true).hide();
+        return;
+      }
+
+      // valid: clear the fields and show the success message
       $form[0].reset();
       clearState($form);
       $success.stop(true, true).hide().fadeIn(300);

@@ -1,18 +1,20 @@
-// Task 1 - Select elements and handle events: light / dark theme (all pages)
+// Light / dark mode switch (all pages)
 // The dark theme is the default. The class "light-theme" on <body> turns on the light theme.
-// The chosen theme is saved in the browser, so it stays when the user opens another page.
+// The chosen mode is saved in localStorage, so it stays when the user opens another page.
 
 $(function () {
-  const $button = $('#theme-button');
+  const $switch = $('#theme-button');
+  const $knob = $switch.find('.switch-knob');
 
-  // the button text always names the next action
-  function updateButtonText() {
-    if ($('body').hasClass('light-theme')) {
-      $button.text('Switch to dark theme');
-    } else {
-      $button.text('Switch to light theme');
-    }
-  }
+  // keeps the switch (state for screen readers and the icon) in line with the page
+  function updateSwitch() {
+  const isLight = $('body').hasClass('light-theme');
+  $switch.attr('aria-checked', isLight ? 'true' : 'false');
+  $knob.text(isLight ? '☀' : '☾');
+  
+  // меняем текст рядом с переключателем
+  $switch.find('.switch-label').text(isLight ? 'Dark mode' : 'Light mode');
+}
 
   try {
     if (localStorage.getItem('vintagetape-theme') === 'light') {
@@ -21,20 +23,16 @@ $(function () {
   } catch (error) {
     // the browser blocks storage: the dark theme stays
   }
-  updateButtonText();
+  updateSwitch();
 
-  $button.on('click', function () {
+  $switch.on('click', function () {
     $('body').toggleClass('light-theme');
-    updateButtonText();
+    updateSwitch();
 
     try {
-      if ($('body').hasClass('light-theme')) {
-        localStorage.setItem('vintagetape-theme', 'light');
-      } else {
-        localStorage.setItem('vintagetape-theme', 'dark');
-      }
+      localStorage.setItem('vintagetape-theme', $('body').hasClass('light-theme') ? 'light' : 'dark');
     } catch (error) {
-      // the theme still works, it is just not remembered
+      // the mode still works, it is just not remembered
     }
   });
 });

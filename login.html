@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Log in to VintageTape with the account you created on the Register page.">
+  <title>Log in | VintageTape</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800&family=Iosevka+Charon:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/features.css">
+</head>
+
+<body class="forms-page">
+
+  <header class="site-nav">
+    <a href="index.html" class="logo-link">
+      <img src="images/logo.png" alt="VintageTape logo" class="logo-image" width="40" height="40">
+      <span class="logo-text">VintageTape</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+  <ul>
+    <li><a href="index.html">Our Product</a></li>
+    <li><a href="idea.html">Idea</a></li>
+    <li><a href="playlists.html">Playlists</a></li>
+    <li><a href="contacts.html">Contacts</a></li>
+
+    <!-- видно только когда НЕ залогинен -->
+    <li data-auth="out"><a href="register.html">Register</a></li>
+    <li data-auth="out"><a href="login.html" aria-current="page">Log in</a></li>
+
+    <!-- иконка профиля ВСЕГДА видна и всегда ведёт на profile.html -->
+    <li>
+      <a href="profile.html" class="profile-link"
+         aria-label="Open profile" title="Profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+        </svg>
+      </a>
+    </li>
+
+    <li>
+      <button type="button" id="theme-button" class="theme-switch" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-knob">☾</span>
+        </span>
+        <span class="switch-label">Light mode</span>
+      </button>
+    </li>
+  </ul>
+</nav>
+  </header>
+
+  <main id="main-content">
+    <section class="memory-section register-section" aria-labelledby="login-title">
+      <div class="page-shell">
+        <h1 id="login-title" class="register-title">Welcome back to<br>VintageTape</h1>
+        <p class="register-intro">
+          Log in with the email and password you used to sign up. The account is kept locally in this browser.
+        </p>
+
+        <form id="login-form" class="contacts-card register-card needs-validation" novalidate>
+          <p id="login-notice" class="alert alert-info" role="status" hidden></p>
+          <p id="login-error" class="alert alert-danger" role="alert" hidden></p>
+
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="login-email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="login-email" name="email"
+                     placeholder="name@example.com" autocomplete="email" required>
+              <div class="invalid-feedback">Please enter an email like name@example.com.</div>
+            </div>
+
+            <div class="col-12">
+              <label for="login-password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="login-password" name="password"
+                     autocomplete="current-password" required>
+              <div class="invalid-feedback">Please enter your password.</div>
+            </div>
+
+            <div class="col-12 form-actions">
+              <button type="submit" class="btn-submit">Log in</button>
+            </div>
+          </div>
+        </form>
+
+        <p class="auth-switch">No account yet? <a href="register.html">Sign up here</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-content">
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="index.html">Our Product</a>
+        <a href="idea.html">Idea</a>
+        <a href="playlists.html">Playlists</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="register.html">Register</a>
+        <a href="login.html">Log in</a>
+      </nav>
+      <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
+      <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
+    </div>
+  </footer>
+
+  
+  <script src="js/jquery-3.6.0.min.js" defer></script>
+  <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/forms.js" defer></script>
+  <script src="js/login-page.js" defer></script>
+
+</body>
+</html>

@@ -25,15 +25,37 @@
     </a>
 
     <nav class="nav-links" aria-label="Primary">
-      <ul>
-        <li><a href="index.html">Our Product</a></li>
-        <li><a href="idea.html">Idea</a></li>
-        <li><a href="playlists.html" aria-current="page">Playlists(!)</a></li>
-        <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="register.html">Register</a></li>
-        <li><button type="button" id="theme-button" class="theme-button">Switch to light theme</button></li>
-      </ul>
-    </nav>
+  <ul>
+    <li><a href="index.html">Our Product</a></li>
+    <li><a href="idea.html">Idea</a></li>
+    <li><a href="playlists.html" aria-current="page">Playlists</a></li>
+    <li><a href="contacts.html">Contacts</a></li>
+
+    <!-- видно только когда НЕ залогинен -->
+    <li data-auth="out"><a href="register.html">Register</a></li>
+    <li data-auth="out"><a href="login.html">Log in</a></li>
+
+    <!-- иконка профиля ВСЕГДА видна и всегда ведёт на profile.html -->
+    <li>
+      <a href="profile.html" class="profile-link"
+         aria-label="Open profile" title="Profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="4"></circle>
+          <path d="M4.5 21a7.5 7.5 0 0 1 15 0"></path>
+        </svg>
+      </a>
+    </li>
+
+    <li>
+      <button type="button" id="theme-button" class="theme-switch" role="switch" aria-checked="false">
+        <span class="switch-track" aria-hidden="true">
+          <span class="switch-knob">☾</span>
+        </span>
+        <span class="switch-label">Light mode</span>
+      </button>
+    </li>
+  </ul>
+</nav>
   </header>
 
   <main id="main-content">
@@ -62,6 +84,7 @@
 
           <button type="button" id="clear-filters" class="btn-reset clear-button">Clear filters</button>
 
+          <p id="search-restored" class="form-text is-hidden">Your last search was restored from this browser.</p>
           <p id="search-count" class="demo-note tool-message" aria-live="polite">Showing 6 of 6 genres</p>
           <p id="no-results" class="demo-note tool-message is-hidden">No results found</p>
         </div>
@@ -143,6 +166,32 @@
       </div>
     </section>
 
+    <!-- external API: sample tracks -->
+    <section class="memory-section" aria-labelledby="sample-title">
+      <div class="page-shell">
+        <p class="faq-kicker feature-kicker">Live data from the iTunes Search API</p>
+        <h2 id="sample-title" class="benefits-title">Hear a sample of a genre</h2>
+
+        <div class="contacts-card tool-card">
+          <form id="sample-form" novalidate>
+            <label for="sample-genre" class="tool-label">Choose a genre</label>
+            <select id="sample-genre" class="tool-input">
+              <option value="rock">Rock</option>
+              <option value="noise-pop">Noise Pop</option>
+              <option value="k-pop">k-pop</option>
+              <option value="neo">Neo</option>
+              <option value="j-pop">J-pop</option>
+              <option value="indie">Indie</option>
+            </select>
+            <button type="submit" class="btn-submit">Find tracks</button>
+          </form>
+
+          <p id="sample-status" class="demo-note tool-message" role="status">Choose a genre and press the button.</p>
+          <ul id="sample-list" class="sample-list"></ul>
+        </div>
+      </div>
+    </section>
+
     <section class="memory-section make-it-yours-section" aria-labelledby="make-it-yours-title">
       <div class="page-shell make-it-yours-shell">
 
@@ -150,16 +199,16 @@
           <h2 id="make-it-yours-title">Make it yours</h2>
           <p>
             Pick a genre, choose 10-14 tracks and give your playlist a name.
-            VintageTape is a static concept website: your shortlist is only remembered in this browser and nothing is sent anywhere.
+            VintageTape is a concept project. Your shortlist is saved in this browser, so it stays between visits.
           </p>
           <ol>
             <li>Search or filter the genres above and add your favourites to the list.</li>
             <li>Write down 10-14 tracks and a name for your playlist.</li>
-            <li>Open the demo contact form and send your wish list (demonstration only).</li>
+            <li>Open the contact form and send your wish list .</li>
           </ol>
         </div>
 
-        <a class="btn-cta make-it-yours-btn" href="contacts.html">Open the demo contact form</a>
+        <a class="btn-cta make-it-yours-btn" href="contacts.html">Open the contact form</a>
 
       </div>
     </section>
@@ -173,6 +222,7 @@
         <a href="playlists.html">Playlists</a>
         <a href="contacts.html">Contacts</a>
         <a href="register.html">Register</a>
+        <a href="login.html">Log in</a>
       </nav>
       <p>&copy; 2026 VintageTape. Web Technologies Frontend. All rights reserved.</p>
       <p class="footer-copy">Questions? <a href="mailto:254316@astanait.edu.kz">MT2503@astanait.edu.kz</a></p>
@@ -181,7 +231,9 @@
 
   <script src="js/jquery-3.6.0.min.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
   <script src="js/search.js" defer></script>
   <script src="js/favourites.js" defer></script>
+  <script src="js/api.js" defer></script>
 </body>
 </html>
