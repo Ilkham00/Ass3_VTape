@@ -18,6 +18,10 @@
 
   .nav-links ul {
     justify-content: flex-end;
+    gap: 8px 16px; /* Чуть больше отступа на больших экранах */
+  }
+  .nav-links li:has(.profile-link) {
+    margin-left: 0;
   }
 
   .site-footer {
